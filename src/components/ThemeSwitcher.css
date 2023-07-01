@@ -1,0 +1,35 @@
+
+:root,
+:root.dark {
+    --switcher-height: 25px;
+    --switcher-width: 60px;
+
+    --switcher-background: #111111;
+    --switcher-border: #DDDDDD 2px solid;
+}
+
+:root.light {
+    --switcher-background: grey;
+    --switcher-border: black 2px solid;
+}
+
+.theme-switcher {
+    display: flex;
+    height: var(--switcher-height);
+    width: var(--switcher-width);
+    border-radius: 20px;
+    background: var(--switcher-background);
+    border: var(--switcher-border);
+}
+
+.theme-state {
+    height: var(--switcher-height);
+    aspect-ratio: 1/1;
+    background: #333333;
+    border-radius: 100%;
+    transition: 0.3s ease-in-out;
+}
+
+.theme-state.light {
+    margin-left: calc(var(--switcher-width) - var(--switcher-height));    
+}
