@@ -1,3 +1,4 @@
+import Navbar from '../components/Navbar';
 import ResumeButton from '../components/ResumeButton';
 import Spacer from '../components/Spacer';
 import './About.css';
@@ -6,10 +7,7 @@ export default function About() {
     return (
         <div className="about">
 
-            <div className='navbar'>
-                <button className='icon-button'>FM</button>
-                <NavLinks/>
-            </div>
+            <Navbar/>
 
             <Spacer height={"10vh"}/>
             <Greetings/>
@@ -17,16 +15,6 @@ export default function About() {
             <Description/>
             <Spacer height={"5vh"}/>
 
-        </div>
-    );
-}
-
-function NavLinks() {
-    return (
-        <div className='nav-links'>
-            <span className='nav-link'>About</span>
-            <span className='nav-link'>Projects</span>
-            <span className='nav-link'>Contact</span>
         </div>
     );
 }
