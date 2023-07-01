@@ -14,7 +14,6 @@ export default function ThemeSwitcher() {
 
     function switchTheme() {
         setTheme(prev => {
-            console.log(prev);
 
             if(prev === 'dark') {
                 return 'light';
@@ -37,9 +36,11 @@ const rootElement = document.documentElement;
 function setDark() {
     rootElement.classList.remove('light');
     rootElement.classList.add('dark');
+    console.log('Set theme to dark.');
 }
 
 function setLight() {
     rootElement.classList.remove('dark');
     rootElement.classList.add('light');
+    console.log('Set theme to light.');
 }
