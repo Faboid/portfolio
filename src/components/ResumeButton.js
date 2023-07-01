@@ -11,7 +11,7 @@ export default function ResumeButton() {
             onMouseDown={() => setClicked(true)}
             onAnimationEnd={() => setClicked(false)}
             >
-            <button className={btnClassName}>Resume</button>
+            <button className={btnClassName} disabled={clicked}>Resume</button>
         </div>
     );
 }
