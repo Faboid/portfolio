@@ -1,0 +1,54 @@
+
+
+.resume-button {
+    width: 18.75rem;
+    height: 3.125rem;
+    background: #33333344;
+    border-radius: 30px;
+    border: 2px solid white;
+    color: white;
+    font-size: large;
+    position: relative;
+    transition: 0.5s;
+}
+
+.resume-button:hover {
+    transform: translateY(-5px);
+    border-color: #9999FF;
+}
+
+.resume-button:active {
+    border-color: #555555;
+    color: #AAAAAA;
+}
+
+.resume-button::before {
+    content: "";
+    background: transparent;
+    position: absolute;
+    border-radius: 30px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.5s ease;
+}
+
+.resume-button:active::before {
+    animation: button-overlay 0.5s ease forwards;
+}
+
+@keyframes button-overlay {
+    0% {
+        border: #9999FF solid 2px;
+    }
+
+    80% {
+        scale: 1.5;
+        border: #9999FF22 solid 2px;
+    }
+
+    100% {
+        border: transparent solid 2px;
+    }
+}

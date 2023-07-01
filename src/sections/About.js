@@ -1,3 +1,4 @@
+import ResumeButton from '../components/ResumeButton';
 import Spacer from '../components/Spacer';
 import './About.css';
 
@@ -34,8 +35,8 @@ function Greetings() {
     return (
         <div className='greetings'>
             <div className='greetings-container'>
-                <h1 className='greeting-text'>Hello, I'm Name.</h1>
-                <button className='resume-button'>Resume</button>
+                <h1 className='greeting-text'>Hello, I'm Name</h1>
+                <ResumeButton/>
             </div>
         </div>
     );
