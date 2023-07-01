@@ -1,7 +1,7 @@
 
 
 .resume-button {
-    width: 18.75rem;
+    width: min(18.75rem, 80vw);
     height: 3.125rem;
     background: #33333344;
     border-radius: 30px;

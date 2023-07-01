@@ -25,7 +25,7 @@
 }
 
 .description-container {
-    transform: translateX(50%);
+    transform: translateX(calc((50vw - 50%) * 0.5));
 }
 
 .about-me-title {
