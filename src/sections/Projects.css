@@ -1,0 +1,17 @@
+
+.project-container {
+    
+}
+
+.project {
+    display: flex;
+    flex-direction: row;
+}
+
+.project > div {
+    flex: 1;
+}
+
+.project.mirrored {
+    flex-direction: row-reverse;
+}
