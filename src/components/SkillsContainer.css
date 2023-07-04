@@ -1,0 +1,33 @@
+
+.skills-container {
+    display:flex;
+}
+
+.skills-container-inner {
+    max-width: 80vw;
+    margin:auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.skill {
+    margin: 1rem;
+    border: white solid 2px;
+    border-radius: 5px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding:0.2rem;
+}
+
+.skill-logo {
+    height: 5rem;
+    aspect-ratio: 1/1;
+    padding: 2rem;
+}
+
+.skill-name {
+    padding: 0.3rem;
+}
