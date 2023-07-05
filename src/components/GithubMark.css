@@ -1,0 +1,24 @@
+
+:root {
+    --image: url('/public/images/logos/github-mark-white.svg');
+}
+
+:root.light {
+    --image: url('/public/images/logos/github-mark.svg');
+}
+
+.github-mark {
+    display: inline-block;
+    height: 2rem;
+    aspect-ratio: 1/1;
+    border: 0px;
+}   
+
+.github-link {
+    display: inline-block;
+    height: 2rem;
+    aspect-ratio: 1/1;
+    background-image: var(--image);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
