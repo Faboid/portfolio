@@ -1,0 +1,70 @@
+
+:root {
+    --text-size: 22px;
+    --input-bg: #333333;
+    --text-color: #DDDDDD;
+}
+
+.contact {
+    min-height: 100vh;
+    background: #222222;
+}
+
+.contact-form {
+    margin: 2rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-form-inner {
+    width: 50vw;
+    min-height: 50vh;
+    background: linear-gradient(to left top, #111111 0%, #191919 50%, transparent 80%);
+    border: 1px white solid;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-input-container {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input-label {
+    padding: 0.2rem;
+    text-align: left;
+}
+
+.form-input {
+    margin: 0.2rem;
+    padding: 0.2rem;
+    font-size: var(--text-size);
+    text-align: left;
+    height: 2.2rem;
+    min-width: 30vw;
+    max-width: 80%;
+    background: var(--input-bg);
+    color: var(--text-color);
+    border-radius: 5px;
+    box-shadow: 3px 5px 20px 3px black;
+}
+
+textarea.form-input {
+    min-height: 15rem;
+}
+
+.form-submit-btn {
+    font-size: var(--text-size);
+    padding: 0.2rem;
+    margin: 2rem;
+    height: 3rem;
+    width: 30rem;
+    background: var(--input-bg);
+    color: var(--text-color);
+    border-radius: 25px;
+    box-shadow: 3px 5px 20px 3px black;
+}
