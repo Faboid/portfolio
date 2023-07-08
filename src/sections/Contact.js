@@ -1,5 +1,6 @@
 import './Contact.css';
 import Spacer from '../components/Spacer';
+import config from '../config.json';
 
 export default function Contact() {
     return (
@@ -12,12 +13,16 @@ export default function Contact() {
 };
 
 function ContactForm() {
+
+    const emailcode = config['emailcode'];
+    const formAction = "https://formsubmit.co/" + emailcode;
+
     return (
         <div className='contact-form'>
             <div className='contact-form-inner'>
                 <Spacer height={"2rem"}/>
 
-                <form action='https://formsubmit.co/98a40627a7bb2ea3ec14d53eb826a378' method='POST'>
+                <form action={formAction} method='POST'>
 
                     <input type='text' name='_hon' className='hon-pot'/>
                     <input type="hidden" name="_captcha" value="false"/>
