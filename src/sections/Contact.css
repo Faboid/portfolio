@@ -68,3 +68,8 @@ textarea.form-input {
     border-radius: 25px;
     box-shadow: 3px 5px 20px 3px black;
 }
+
+.hon-pot {
+    position: absolute;
+    display: none;
+}
