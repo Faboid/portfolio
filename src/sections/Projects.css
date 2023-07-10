@@ -62,8 +62,9 @@
 }
 
 .project-image {
-    max-width: 50vw;
+    min-width: 35vw;
     height: auto;
+    object-fit: contain;
 }
 
 .project-title {
@@ -73,7 +74,7 @@
 }
 
 .project-description {
-    padding: 2rem;
+    padding: 2%;
 }
 
 .project-techs {
@@ -87,4 +88,37 @@
 
 .tech {
     padding: 0.5rem;
+}
+
+@media (max-width: 2000px) {
+    .project-container {
+        width: 90vw;
+    }
+}
+
+@media (max-width: 1280px) {
+
+    .project-container {
+        width: 90vw;
+    }
+
+    .project,
+    .project.mirrored {
+        flex-wrap: wrap;
+        transform: translateX(0%);
+    }
+    
+    .project-text,
+    .project.mirrored .project-text {
+        border-radius: 0px 0px 25px 25px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .project-container {
+        width: 100vw;
+    }
+    
 }
