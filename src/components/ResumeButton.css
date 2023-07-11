@@ -1,13 +1,13 @@
 
 
 .resume-button {
-    width: min(18.75rem, 80vw);
-    height: 3.125rem;
+    width: min(10.75rem, 80vw);
+    height: 2rem;
     background: #33333344;
     border-radius: 30px;
     border: 2px solid white;
     color: white;
-    font-size: 120%;
+    font-size: 100%;
     position: relative;
     transition: 0.5s;
 }
