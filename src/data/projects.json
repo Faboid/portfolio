@@ -6,25 +6,25 @@
         "github": "https://github.com/Faboid/Backuper",
         "tech": ["C#", "WPF", "XAML"]
     },
-    {
-        "image": "/PswManager_Image.png",
-        "title": "Password Manager",
-        "description": "Manages passwords.",
-        "github": "https://github.com/Faboid/PswManager",
+        {
+        "image": "/SuperSold_Image.png",
+        "title": "SuperSold",
+        "description": "An ASP.NET Core MVC marketplace where users can register, upload products, and simulate buying and selling. Features include user authentication, product management, and a responsive interface.",
+        "github": "https://github.com/Faboid/SuperSold",
         "tech": ["C#", "WPF", "XAML"]
     },
     {
         "image": "/PswManager_Image.png",
         "title": "Password Manager",
-        "description": "Manages passwords.",
+        "description": "A secure password manager for WPF and CLI platforms, offering secure storage and management of passwords and emails.",
         "github": "https://github.com/Faboid/PswManager",
         "tech": ["C#", "WPF", "XAML"]
     },
     {
-        "image": "/PswManager_Image.png",
-        "title": "Password Manager",
-        "description": "Manages passwords.",
-        "github": "https://github.com/Faboid/PswManager",
+        "image": "/MealPicker_Image.png",
+        "title": "MealPicker",
+        "description": "A WPF application that retrieves random recipes from a third party API and presents them in a user-friendly format. It supports custom themes and securely encrypts the user API key.",
+        "github": "https://github.com/Faboid/MealPicker",
         "tech": ["C#", "WPF", "XAML"]
     }
 ]
