@@ -4,7 +4,7 @@
 }
 
 html {
-  font-size: 22px;
+  font-size: calc(10px + 0.5vw + 0.5vh);
 }
 
 body {
@@ -21,10 +21,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-@media (min-width: 3000px) {
-  html {
-    font-size: 44px;
-  }
 }
