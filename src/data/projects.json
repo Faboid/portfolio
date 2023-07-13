@@ -1,6 +1,6 @@
 [
     {
-        "image": "/Backuper_Image.png",
+        "image": "/Backuper_21_Image.png",
         "title": "Backuper",
         "description": "Backuper is a C# WPF desktop app for Windows that automates folder and file backups. It supports a unique version limit for each backup and performs automatic cleanup of older backups.",
         "github": "https://github.com/Faboid/Backuper",
