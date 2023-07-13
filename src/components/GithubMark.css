@@ -1,6 +1,7 @@
 
 :root {
     --image: url('/public/images/logos/github-mark-white.svg');
+    --github-mark-size: 1.5rem;
 }
 
 :root.light {
@@ -9,14 +10,14 @@
 
 .github-mark {
     display: inline-block;
-    height: 2rem;
+    height: var(--github-mark-size);
     aspect-ratio: 1/1;
     border: 0px;
 }   
 
 .github-link {
     display: inline-block;
-    height: 2rem;
+    height: var(--github-mark-size);
     aspect-ratio: 1/1;
     background-image: var(--image);
     background-size: contain;
