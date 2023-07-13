@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import GithubMark from '../components/GithubMark';
+import ZoomableImage from '../components/ZoomableImage';
 import projects from '../data/projects.json';
 import './Projects.css';
 
@@ -36,7 +36,7 @@ function Project({ project}) {
             </div>
 
             <div className='project-image-area'>
-                <Image image={project.image}/>
+                <ZoomableImage imagePath={project.image} normalStyle="project-image"/>
             </div>
 
             <div className='project-tech-area'>
@@ -51,27 +51,3 @@ function Project({ project}) {
     );
 }
 
-function Image({ image }) {
-
-    const [focused, setFocused] = useState(false);
-
-    if(!focused) {
-        return (
-            <img onMouseDown={() => setFocused(true)} className="project-image" src={process.env.PUBLIC_URL + '/images/projects' + image} alt="view"/>
-        );
-    }
-
-    return (
-        <>
-            <img onMouseDown={() => setFocused(true)} className="project-image" src={process.env.PUBLIC_URL + '/images/projects' + image} alt="view"/>
-
-            <div className='full-screen' onMouseDown={() => setFocused(false)}>
-                <div className='img-container'>
-                    <img className="project-image" src={process.env.PUBLIC_URL + '/images/projects' + image} alt="view"/>
-                </div>
-            </div>
-
-        </>
-    );
-
-}
