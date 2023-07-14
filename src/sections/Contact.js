@@ -4,7 +4,7 @@ import config from '../config.json';
 
 export default function Contact() {
     return (
-        <div className="contact">
+        <div id='contact' className="contact">
             <Spacer height="3vh"/>
             <h1>Contact me</h1>
             <ContactForm/>

@@ -1,3 +1,4 @@
+import HeaderLink from './HeaderLink';
 import './Navbar.css';
 import ThemeSwitcher from './ThemeSwitcher';
 
@@ -18,9 +19,9 @@ export default function Navbar() {
 function NavLinks() {
     return (
         <div className='nav-links'>
-            <span className='nav-link'>About</span>
-            <span className='nav-link'>Projects</span>
-            <span className='nav-link'>Contact</span>
+            {/*<HeaderLink toId="about" text="About"/>*/}
+            <HeaderLink toId="projects" text="Projects"/>
+            <HeaderLink toId="contact" text="Contact"/>
         </div>
     );
 }
