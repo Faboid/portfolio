@@ -28,6 +28,15 @@
     box-shadow: 0px -10px 50px 35px rgba(0, 0, 0, 0.8);
 }
 
+.clickable-image:hover {
+    transition: 100ms;
+    box-shadow: 4px 4px 15px 5px #000000;
+}
+
+.clicked-image {
+    animation: 200ms jumble cubic-bezier(.17, .6, 1, 1);
+}
+
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -42,8 +51,19 @@
     from {
         scale: 0;
     }
-
     to {
+        scale: 1;
+    }
+}
+
+@keyframes jumble {
+    0% {
+        scale: 1;
+    }
+    50% {
+        scale: 0.6;
+    }
+    100% {
         scale: 1;
     }
 }

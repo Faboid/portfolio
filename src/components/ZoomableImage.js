@@ -8,13 +8,13 @@ export default function ZoomableImage({ imagePath, normalStyle }) {
 
     if(!focused) {
         return (
-            <img onMouseDown={() => setFocused(true)} className={normalStyle} src={fullPath} alt="view"/>
+            <img onMouseDown={() => setFocused(true)} className={normalStyle + " clickable-image"} src={fullPath} alt="view"/>
         );
     }
 
     return (
         <>
-            <img onMouseDown={() => setFocused(true)} className={normalStyle} src={fullPath} alt="view"/>
+            <img onMouseDown={() => setFocused(true)} className={normalStyle + " clicked-image"} src={fullPath} alt="view"/>
 
             <div className='full-screen' onMouseDown={() => setFocused(false)}>
                 <div className='img-container'>
