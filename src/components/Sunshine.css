@@ -9,6 +9,31 @@
     overflow: hidden;
 }
 
+.sun {
+    position: absolute;
+    left: 80vw;
+    top: 15vh;
+    height: min(20rem, 40vh);
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    background: radial-gradient(circle at right, #ff2222, #ff6600, #ff9900);
+    box-shadow: 
+        -5px 15px 150px 50px #ddaa00bb,
+        20px -10px 150px 100px #aa550066,
+        15px 30px 150px 150px #55330044;
+    animation: 30s rotate linear infinite forwards;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .stars-container {
     pointer-events: none;
     width: 100%;
