@@ -1,12 +1,14 @@
 import Navbar from '../components/Navbar';
 import ResumeButton from '../components/ResumeButton';
 import Spacer from '../components/Spacer';
+import Sunshine from '../components/Sunshine';
 import './About.css';
 
 export default function About() {
     return (
         <div id='about' className="about">
 
+            {/*
             <Navbar/>
 
             <Spacer height={"10vh"}/>
@@ -14,7 +16,10 @@ export default function About() {
             <Spacer height={"3vh"}/>
             <Description/>
             <Spacer height={"5vh"}/>
+            */}
 
+            <Sunshine/>
+            
         </div>
     );
 }

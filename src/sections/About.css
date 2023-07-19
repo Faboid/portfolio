@@ -4,6 +4,7 @@
 }
 
 .about {
+    position: relative;
     background-image: var(--about-bg);
     min-height: 100vh;
 }
