@@ -1,9 +1,10 @@
 import './Sunshine.css';
 
 export default function Sunshine() {
+
     return (
         <div className="sunshine">
-            <StarsContainer amount={50}/>
+            <StarsContainer/>
             <Sun/>
         </div>
     );
@@ -12,7 +13,6 @@ export default function Sunshine() {
 //to implement
 function Sun() {
 
-
     return (
         <div className="sun">
 
@@ -20,11 +20,15 @@ function Sun() {
     );
 }
 
-function StarsContainer({ amount }) {
+function StarsContainer() {
+
+    let starsAmount = Math.floor((window.innerHeight * window.innerWidth) / 20000);
+    starsAmount = Math.max(50, starsAmount);
+    starsAmount = Math.min(500, starsAmount);
 
     return (
         <div className="stars-container">
-            {Array(amount).fill(0).map((element, index) => {
+            {Array(starsAmount).fill(0).map((_, index) => {
                 return <Star key={index} maxSize={0.5} sunPercentageXPos={0.8}/>;
             })}
         </div>
