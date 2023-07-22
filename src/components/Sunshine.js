@@ -10,13 +10,9 @@ export default function Sunshine() {
     );
 }
 
-//to implement
 function Sun() {
-
     return (
-        <div className="sun">
-
-        </div>
+        <div className="sun"></div>
     );
 }
 
