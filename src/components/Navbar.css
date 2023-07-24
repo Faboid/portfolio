@@ -35,14 +35,9 @@
     transition: 2s;
     border-radius: 100%;
     font-size: 150%;
+    z-index: 100;
 }
 
 .icon-button:hover {
     scale: 1.2;
-}
-
-.icon-button:focus {
-    background: #333333;
-    transform: scale(1.3);
-    rotate: 360deg;
 }

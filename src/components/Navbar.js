@@ -1,6 +1,5 @@
 import HeaderLink from './HeaderLink';
 import './Navbar.css';
-import ThemeSwitcher from './ThemeSwitcher';
 
 export default function Navbar() {
     return (
@@ -8,7 +7,6 @@ export default function Navbar() {
 
             <button className='icon-button'>FM</button>
             <div className='nav-headers'>
-                <ThemeSwitcher/>
                 <NavLinks/>
             </div>
 

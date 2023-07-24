@@ -8,17 +8,14 @@ export default function About() {
     return (
         <div id='about' className="about">
 
-            {/*
+            <Sunshine/>
             <Navbar/>
 
             <Spacer height={"10vh"}/>
             <Greetings/>
-            <Spacer height={"3vh"}/>
+            <Spacer height={"5vh"}/>
             <Description/>
             <Spacer height={"5vh"}/>
-            */}
-
-            <Sunshine/>
             
         </div>
     );
