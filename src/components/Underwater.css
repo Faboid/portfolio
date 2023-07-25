@@ -7,7 +7,9 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background: radial-gradient(ellipse at 90% 10%, #2222AA, black);
+    background: 
+        linear-gradient(to bottom, transparent 60%, black),
+        radial-gradient(ellipse at 90% 10%, #2222AA, black 80%);
     z-index: -1;
     overflow:hidden;
 }
@@ -21,7 +23,7 @@
     border-radius: 100%;
     aspect-ratio: 1/1;
     animation:
-        rise-up 15s infinite ease-out,
+        rise-up 20s infinite ease-out,
         movement 3s infinite ease-in-out alternate,
         resizing 2s infinite ease-in-out alternate;
 }

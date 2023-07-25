@@ -2,7 +2,7 @@ import './Underwater.css';
 
 export default function Underwater({ children }) {
 
-    const bubblesAmount = Math.floor(window.innerWidth / 15);
+    const bubblesAmount = Math.floor(window.innerWidth / 20);
     const maxDelay = Math.floor(window.innerHeight * 15);
 
     return (
