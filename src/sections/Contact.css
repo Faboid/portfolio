@@ -8,7 +8,7 @@
 .contact {
     min-height: calc(100vh - 4rem);
     padding: 2rem;
-    background: #222222;
+    background: transparent;
 }
 
 .contact-form {

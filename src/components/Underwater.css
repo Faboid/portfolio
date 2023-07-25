@@ -1,0 +1,65 @@
+
+.underwater-container {
+    position: relative;
+}
+
+.underwater {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(ellipse at 90% 10%, #2222AA, black);
+    z-index: -1;
+    overflow:hidden;
+}
+
+.bubble {
+    opacity: 0;
+    position: absolute;
+    height: 0.7rem;
+    background: transparent;
+    border: 3px solid white;
+    border-radius: 100%;
+    aspect-ratio: 1/1;
+    animation:
+        rise-up 15s infinite ease-out,
+        movement 3s infinite ease-in-out alternate,
+        resizing 2s infinite ease-in-out alternate;
+}
+
+@keyframes rise-up {
+    from {
+        opacity: 0.5;
+        top: 100%;
+    }
+    to {
+        opacity: 0.5;
+        top: 0%;
+    }
+}
+
+@keyframes movement {
+    0% {
+        transform: translate(0%, 0%);
+    }
+    50% {
+        transform: translate(-35%, 50%);
+    }
+    100% {
+        transform: translate(50%, -50%);
+    }
+}
+
+@keyframes resizing {
+    0% {
+        scale: 1;
+    }
+    50% {
+        scale: 1.1;
+    }
+    75% {
+        scale: 0.85;
+    }
+    100% {
+        scale: 0.9;
+    }
+}
