@@ -1,13 +1,11 @@
 import Navbar from '../components/Navbar';
 import ResumeButton from '../components/ResumeButton';
-import Sunshine from '../components/Sunshine';
 import './About.css';
 
 export default function About() {
     return (
         <div id='about' className="about">
 
-            <Sunshine/>
             <Navbar/>
 
             <div className="about-text-area">

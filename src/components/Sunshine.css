@@ -1,4 +1,8 @@
 
+.sunshine-container {
+    position: relative;
+}
+
 .sunshine {
     position: absolute;
     top:0;

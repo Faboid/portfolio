@@ -1,11 +1,15 @@
 import './Sunshine.css';
 
-export default function Sunshine() {
+export default function Sunshine({ children }) {
 
     return (
-        <div className="sunshine">
-            <StarsContainer/>
-            <Sun/>
+        <div className="sunshine-container">
+            <div className='sunshine'>
+                <StarsContainer/>
+                <Sun/>
+            </div>
+
+            {children}
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import './App.css';
+import Sunshine from './components/Sunshine';
 import About from './sections/About';
 import Contact from './sections/Contact';
 import Projects from './sections/Projects';
@@ -7,7 +8,9 @@ import Projects from './sections/Projects';
 function App() {
   return (
     <div className="App">
-      <About/>
+      <Sunshine>
+        <About/>
+      </Sunshine>
       {/* <Skills/> */}
       <Projects/>
       <Contact/>
