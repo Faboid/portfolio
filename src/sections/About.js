@@ -1,6 +1,5 @@
 import Navbar from '../components/Navbar';
 import ResumeButton from '../components/ResumeButton';
-import Spacer from '../components/Spacer';
 import Sunshine from '../components/Sunshine';
 import './About.css';
 
@@ -11,11 +10,10 @@ export default function About() {
             <Sunshine/>
             <Navbar/>
 
-            <Spacer height={"10vh"}/>
-            <Greetings/>
-            <Spacer height={"5vh"}/>
-            <Description/>
-            <Spacer height={"5vh"}/>
+            <div className="about-text-area">
+                <Greetings/>
+                <Description/>
+            </div>
             
         </div>
     );
