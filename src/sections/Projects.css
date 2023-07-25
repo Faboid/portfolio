@@ -17,6 +17,7 @@
     margin: 0.3rem;
     padding: 1rem;
     border: 2px white solid;
+    background: linear-gradient(to bottom right, #111111EE, #111111);
     border-radius: 25px;
     overflow: hidden;
 
