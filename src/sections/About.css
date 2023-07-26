@@ -27,6 +27,7 @@
 
 .description {
     margin-top: 3vh;
+    max-width: 90vw;
     display: flex;
     align-content: center;
     justify-content: center;

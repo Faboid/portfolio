@@ -9,12 +9,13 @@
 .projects-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    max-width: 90vw;
+    gap: 3rem;
     width: calc(100% - 2rem);
     padding: 1rem;
 }
 
 .project {
-    margin: 0.3rem;
     padding: 1rem;
     border: 2px white solid;
     background: linear-gradient(to bottom right, #111111EE, #111111);
@@ -60,5 +61,6 @@
 @media (max-width: 780px) {
     .projects-wrapper {
         grid-template-columns: auto;
+        width: auto;
     }
 }
