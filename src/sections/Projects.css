@@ -1,9 +1,21 @@
 
 .projects {
+    background: linear-gradient(to bottom, #00000033, transparent 15%);
     min-height: 100vh;
+    padding-top: 5vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.projects-section-title {
+    background: linear-gradient(to bottom, #11111166, transparent);
+    border-radius: 50%;
+    background-size: 500%;
+    padding: 1rem;
+    margin-bottom: 0;
+    font-size: 200%;
+    overflow:visible;
 }
 
 .projects-wrapper {
@@ -26,6 +38,8 @@
     grid-template-rows: auto auto auto;
     grid-auto-flow: row;
     grid-auto-rows: minmax(0, 1fr);
+
+    box-shadow: -10px 10px 20px 5px black;
 
 }
 
