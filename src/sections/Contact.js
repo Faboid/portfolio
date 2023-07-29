@@ -3,10 +3,13 @@ import Spacer from '../components/Spacer';
 import config from '../config.json';
 
 export default function Contact() {
+
+    const contactHeader = "Contact Me";
+
     return (
         <div id='contact' className="contact">
             <Spacer height="3vh"/>
-            <h1>Contact me</h1>
+            <h3 data-content={contactHeader} className='contact-section-header'>{contactHeader}</h3>
             <ContactForm/>
         </div>
     );
