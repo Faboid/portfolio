@@ -9,13 +9,24 @@
 }
 
 .projects-section-title {
-    background: linear-gradient(to bottom, #11111166, transparent);
-    border-radius: 50%;
-    background-size: 500%;
+    position: relative;
     padding: 1rem;
     margin-bottom: 0;
     font-size: 200%;
-    overflow:visible;
+}
+
+.projects-section-title:before {
+    position: absolute;
+    content: attr(data-content);
+    width:100%;
+    height:100%;
+    color: black;
+    filter: blur(2px);
+    transform: translate(-10%, 5%);
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    z-index: -1;
 }
 
 .projects-wrapper {

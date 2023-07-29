@@ -5,10 +5,12 @@ import './Projects.css';
 
 export default function Projects() {
 
+    const sectionHeader = "My Projects";
+
     return (
         <div id='projects' className="projects">
 
-            <h2 className='projects-section-title'>My Projects</h2>
+            <h2  data-content={sectionHeader} className='projects-section-title'>{sectionHeader}</h2>
 
             <div className='projects-wrapper'>
                 {projects.map(item => {
