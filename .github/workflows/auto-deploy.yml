@@ -3,6 +3,8 @@ name: Auto-Deploy to gh-pages
 on:
   workflow_dispatch:
   push:
+    branches:
+      - "master"
 
 jobs:
   auto-deploy:
