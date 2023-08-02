@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import GithubMark from '../components/GithubMark';
 import ZoomableImage from '../components/ZoomableImage';
 import projects from '../data/projects.json';
@@ -21,10 +22,28 @@ export default function Projects() {
     );
 };
 
-function Project({ project}) {
+function Project({ project }) {
+
+    const projDiv = useRef(null);
+
+    function updateWhiteCircle(e) {
+
+        const target = projDiv.current;
+        const rect = target.getBoundingClientRect();
+        const x = e.clientX - rect.left + 'px';
+        const y = e.clientY - rect.top + 'px';
+
+        target.style.setProperty('--mouse-x', x);
+        target.style.setProperty('--mouse-y', y);
+
+    }
 
     return (
-        <div className='project'>
+        <div 
+            ref={projDiv}
+            className='project' 
+            onMouseMove={(e) => updateWhiteCircle(e)}
+            >
 
             <div className='project-text-area'>
 
