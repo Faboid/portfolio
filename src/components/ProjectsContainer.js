@@ -36,10 +36,10 @@ export default function ProjectsContainer({ projects }) {
 
 function Project({ project, getParentRect, lightX, lightY }) {
 
-    const projDiv = useRef(null);
+    const projLight = useRef(null);
 
     useEffect(() => {
-        const target = projDiv.current;
+        const target = projLight.current;
         const rect = target.getBoundingClientRect();
         const parent = getParentRect();
 
@@ -55,10 +55,11 @@ function Project({ project, getParentRect, lightX, lightY }) {
     }, [getParentRect, lightX, lightY]);
 
     return (
-        <div 
-            ref={projDiv}
-            className='project'
-            >
+        <div className='project'>
+
+            <div className='project-bg'>
+                <div ref={projLight} className='project-light'></div>
+            </div>
 
             <div className='project-text-area'>
 
