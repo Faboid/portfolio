@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import GithubMark from '../components/GithubMark';
 import ZoomableImage from '../components/ZoomableImage';
 import './ProjectsContainer.css';
@@ -6,36 +6,58 @@ import './ProjectsContainer.css';
 
 export default function ProjectsContainer({ projects }) {
 
-    return (
-        <div className='projects-container'>
-            {projects.map(item => {
-                return <Project key={item.title} project={item}/>;
-            })}
-        </div>
-    );
-}
+    const containerDiv = useRef(null);
+    const [x, setX] = useState(-2000);
+    const [y, setY] = useState(-2000);
 
-function Project({ project }) {
+    function onMouseMove(e) {
 
-    const projDiv = useRef(null);
-
-    function updateWhiteCircle(e) {
-
-        const target = projDiv.current;
+        const target = containerDiv.current;
         const rect = target.getBoundingClientRect();
-        const x = e.clientX - rect.left + 'px';
-        const y = e.clientY - rect.top + 'px';
 
-        target.style.setProperty('--mouse-x', x);
-        target.style.setProperty('--mouse-y', y);
+        setX(() => e.clientX - rect.left);
+        setY(() => e.clientY - rect.top);
 
     }
 
     return (
         <div 
+            className='projects-container' 
+            ref={containerDiv}
+            onMouseMove={(e) => onMouseMove(e)}
+            >
+
+            {projects.map(item => {
+                return <Project key={item.title} project={item} getParentRect={() => containerDiv.current.getBoundingClientRect()} lightX={x} lightY={y}/>;
+            })}
+        </div>
+    );
+}
+
+function Project({ project, getParentRect, lightX, lightY }) {
+
+    const projDiv = useRef(null);
+
+    useEffect(() => {
+        const target = projDiv.current;
+        const rect = target.getBoundingClientRect();
+        const parent = getParentRect();
+
+        //calc
+        const xDiff = rect.left - parent.left;
+        const yDiff = rect.top - parent.top;
+        const x = lightX - xDiff + 'px';
+        const y = lightY - yDiff + 'px';
+
+        target.style.setProperty('--mouse-x', x);
+        target.style.setProperty('--mouse-y', y);
+
+    }, [getParentRect, lightX, lightY]);
+
+    return (
+        <div 
             ref={projDiv}
-            className='project' 
-            onMouseMove={(e) => updateWhiteCircle(e)}
+            className='project'
             >
 
             <div className='project-text-area'>
