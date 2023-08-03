@@ -11,7 +11,7 @@
     padding: 1rem;
     border: 2px white solid;
     background:
-        radial-gradient(15rem circle at var(--mouse-x, 20rem) var(--mouse-y, 20rem), #FFFFFF11, transparent 50%),
+        radial-gradient(25rem circle at var(--mouse-x, 20rem) var(--mouse-y, 20rem), #FFFFFF11, transparent 50%),
         linear-gradient(to bottom right, #111111EE, #111111);
     border-radius: 25px;
     overflow: hidden;
