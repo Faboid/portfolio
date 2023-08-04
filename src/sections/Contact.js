@@ -1,5 +1,6 @@
 import './Contact.css';
 import Spacer from '../components/Spacer';
+import ContactForm from '../components/ContactForm';
 import config from '../config.json';
 
 export default function Contact() {
@@ -10,11 +11,13 @@ export default function Contact() {
         <div id='contact' className="contact">
             <Spacer height="3vh"/>
             <h3 data-content={contactHeader} className='contact-section-header'>{contactHeader}</h3>
+            {/*<ContactForm/>*/}
+            <Spacer height={"3vh"}/>
             <ContactForm/>
         </div>
     );
 };
-
+/*
 function ContactForm() {
 
     const emailcode = config['emailcode'];
@@ -56,3 +59,4 @@ function ContactForm() {
         </div>
     );
 }
+*/
