@@ -83,6 +83,8 @@
 
 textarea.form-input {
     min-height: 10rem;
+    max-height: 15rem;
+    resize: vertical;
 }
 
 .form-submit-btn {
