@@ -22,7 +22,7 @@ export default function ContactForm() {
                 <textarea name='message' placeholder='Message' className='input-field'/>
             </div>
 
-            <button className='submit-button'>Submit</button>
+            <button className='submit-button'>Send</button>
 
         </div>
     );
