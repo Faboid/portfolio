@@ -1,6 +1,6 @@
 
 :root {
-    --surround-space: 30vw;
+    --surround-space: 30%;
 }
 
 .contact-form {
@@ -9,8 +9,8 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    padding-right: var(--surround-space);
-    padding-left: var(--surround-space);
+    margin-right: var(--surround-space);
+    margin-left: var(--surround-space);
 }
 
 .main-info {
@@ -24,7 +24,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, #00000022, #00000055);
     border-bottom: 2px solid white;
     width:100%;
 }
@@ -33,7 +32,7 @@
     outline: none;
     padding: 0.2rem;
     width:100%;
-    background: transparent;
+    background: linear-gradient(to bottom, transparent, #FFFFFF06);
     border: none;
     border-color: transparents;
     color: white;
@@ -42,16 +41,28 @@
 
 textarea.input-field {
     resize: vertical;
-    height: 3rem;
+    min-height: 5rem;
     max-height: 10rem;
     width: 100%;
 }
 
 .submit-button {
+    font-size: 100%;
     border: 2px white solid;
-    border-radius: 15px;
+    border-radius: 2rem;
     color: white;
     background: transparent;
-    height: 2rem;
-    width: 20rem;
+    margin-top: 1.5rem;
+    width: 60%;
+    aspect-ratio: 10/1;
+    min-width: 150px;
+    min-height: 30px;
+}
+
+@media (max-width: 800px) {
+
+    :root {
+        --surround-space: 5%;
+    }
+
 }
