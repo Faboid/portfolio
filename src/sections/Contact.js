@@ -12,7 +12,7 @@ export default function Contact() {
             <Spacer height="3vh"/>
             <h3 data-content={contactHeader} className='contact-section-header'>{contactHeader}</h3>
             {/*<ContactForm/>*/}
-            <Spacer height={"3vh"}/>
+            <Spacer height={"min(10vh, 4rem)"}/>
             <ContactForm/>
         </div>
     );
