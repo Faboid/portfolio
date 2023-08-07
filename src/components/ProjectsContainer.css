@@ -1,3 +1,8 @@
+
+:root {
+    --rotate-time: 200ms;
+}
+
 .projects-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -20,6 +25,10 @@
 
     box-shadow: -10px 10px 20px 5px black;
     position: relative;
+
+    transition: var(--rotate-time);
+    transition-timing-function: linear;
+    transform: rotate3d(var(--rotate-x, 0), var(--rotate-y, 0), 0, 10deg);
 }
 
 .project-bg {

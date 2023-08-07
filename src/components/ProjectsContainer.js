@@ -7,16 +7,20 @@ import './ProjectsContainer.css';
 export default function ProjectsContainer({ projects }) {
 
     const containerDiv = useRef(null);
-    const [x, setX] = useState(-2000);
-    const [y, setY] = useState(-2000);
+    const [lightX, setLightX] = useState(-2000);
+    const [lightY, setLightY] = useState(-2000);
+    const [mouseX, setMouseX] = useState(0);
+    const [mouseY, setMouseY] = useState(0);
 
     function onMouseMove(e) {
 
         const target = containerDiv.current;
         const rect = target.getBoundingClientRect();
 
-        setX(() => e.clientX - rect.left);
-        setY(() => e.clientY - rect.top);
+        setLightX(() => e.clientX - rect.left);
+        setLightY(() => e.clientY - rect.top);
+        setMouseX(() => e.clientX);
+        setMouseY(() => e.clientY);
 
     }
 
@@ -28,16 +32,25 @@ export default function ProjectsContainer({ projects }) {
             >
 
             {projects.map(item => {
-                return <Project key={item.title} project={item} getParentRect={() => containerDiv.current.getBoundingClientRect()} lightX={x} lightY={y}/>;
+                return <Project 
+                    key={item.title} 
+                    project={item} 
+                    getParentRect={() => containerDiv.current.getBoundingClientRect()} 
+                    lightX={lightX} 
+                    lightY={lightY}
+                    clientX={mouseX}
+                    clientY={mouseY}/>;
             })}
         </div>
     );
 }
 
-function Project({ project, getParentRect, lightX, lightY }) {
+function Project({ project, getParentRect, lightX, lightY, clientX, clientY }) {
 
+    const projDiv = useRef(null);
     const projLight = useRef(null);
 
+    //handle light
     useEffect(() => {
         const target = projLight.current;
         const rect = target.getBoundingClientRect();
@@ -54,8 +67,56 @@ function Project({ project, getParentRect, lightX, lightY }) {
 
     }, [getParentRect, lightX, lightY]);
 
+    //handle 3d rotation
+    useEffect(() => {
+        
+        const target = projDiv.current;
+
+        //get distance to proj(0, 0)
+        const projRect = target.getBoundingClientRect();
+        let x = clientX - projRect.left;
+        let y = clientY - projRect.top;
+
+        //get proj size
+        let height = projRect.bottom - projRect.top;
+        let width = projRect.right - projRect.left;
+
+        //set some offset
+        const offset = 15; //px
+        x += offset;
+        y += offset;
+        height += offset * 2;
+        width += offset * 2; 
+
+        //normalize to percentage
+        let posX = x / width;
+        let posY = y / height;
+        
+        //check for boundaries
+        if(posX < 0 || posX > 1 || posY < 0 || posY > 1) {
+
+            //reset rotation to 0, as it's outside range
+            setTimeout(() => {
+                target.style.setProperty("--rotate-x", 0);
+                target.style.setProperty("--rotate-y", 0);
+            }, 200);
+
+            return;
+        }
+
+        //remove 0.5 to move (0, 0) to the center of the proj
+        posX -= 0.5;
+        posY -= 0.5;
+
+        setTimeout(() => {
+            target.style.setProperty("--rotate-x", posY * 5);
+            target.style.setProperty("--rotate-y", -posX * 5);
+        }, 200);
+
+    }, [clientX, clientY]);
+
     return (
-        <div className='project'>
+        <div className='project' ref={projDiv}>
 
             <div className='project-bg'>
                 <div ref={projLight} className='project-light'></div>
