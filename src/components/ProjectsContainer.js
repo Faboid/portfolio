@@ -125,11 +125,11 @@ function Project({ project, getParentRect, lightX, lightY, clientX, clientY }) {
             <div className='project-text-area'>
 
                 <div className='project-header'>
-                    <span className='project-title'>{project.title}</span>
+                    <span className='project-title text-shadow-rotation'>{project.title}</span>
                     <GithubMark link={project.github}/>
                 </div>
 
-                <p className='project-description'>{project.description}</p>
+                <p className='project-description text-shadow-rotation'>{project.description}</p>
                 
             </div>
 
@@ -140,7 +140,7 @@ function Project({ project, getParentRect, lightX, lightY, clientX, clientY }) {
             <div className='project-tech-area'>
                 {project.tech.map((element) => {
                     return (
-                        <span key={element} className='tech'>{element}</span>
+                        <span key={element} className='tech text-shadow-rotation'>{element}</span>
                     );
                 })}
             </div>
