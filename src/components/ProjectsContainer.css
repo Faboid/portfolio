@@ -40,7 +40,7 @@
     --offset-y: calc(var(--rotate-x) * var(--text-rotation-distance-multiplier) + 4px);
     transition: var(--rotate-time);
     transition-timing-function: var(--transition-timing);
-    text-shadow: var(--offset-x) var(--offset-y) 3px rgba(0, 0, 0, 1);
+    text-shadow: var(--offset-x) var(--offset-y) 0.19rem rgba(0, 0, 0, 1);
 }
 
 .project-bg {
