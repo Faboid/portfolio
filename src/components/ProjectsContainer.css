@@ -2,7 +2,7 @@
 :root {
     --rotate-time: 200ms;
     --transition-timing: linear;
-    --text-rotation-distance-multiplier: 3px;
+    --text-rotation-distance-multiplier: 0.188rem;
 }
 
 .projects-container {
@@ -99,4 +99,17 @@
         grid-template-columns: auto;
         width: auto;
     }
+}
+
+/*turn off the rotation effects for touch-screen*/
+@media (hover: none) {
+
+    .project {
+        transform: rotate3d(0, 0, 0, 0deg);
+    }
+
+    .text-shadow-rotation {
+        text-shadow: -3px 4px 3px rgba(0, 0, 0, 1);
+    }
+
 }
