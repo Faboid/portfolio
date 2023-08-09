@@ -1,7 +1,7 @@
 
 :root {
     --rotation-time: 200ms;
-    --rotation-delay: 10ms;
+    --rotation-delay: 3ms;
     --rotation-degrees: 10deg;
     --transition-timing: linear;
     --text-rotation-distance-multiplier: 0.188rem;
@@ -60,7 +60,7 @@
 .project-light {
     height: 100%;
     width: 100%;
-    background: radial-gradient(20rem circle at var(--mouse-x) var(--mouse-y), #AAAAFF11, transparent 50%);
+    background: radial-gradient(20rem circle at var(--mouse-x) var(--mouse-y), #AAAAFF44, transparent 50%);
     transition: 3s;
     opacity: 0.5;
 }
