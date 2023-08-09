@@ -70,6 +70,7 @@ function Project({ project, getParentRect, lightX, lightY, clientX, clientY }) {
     //handle 3d rotation
     useEffect(() => {
         
+        const apply_delay = 200;
         const target = projDiv.current;
 
         //get distance to proj(0, 0)
@@ -99,7 +100,7 @@ function Project({ project, getParentRect, lightX, lightY, clientX, clientY }) {
             setTimeout(() => {
                 target.style.setProperty("--rotate-x", 0);
                 target.style.setProperty("--rotate-y", 0);
-            }, 200);
+            }, apply_delay);
 
             return;
         }
@@ -111,7 +112,7 @@ function Project({ project, getParentRect, lightX, lightY, clientX, clientY }) {
         setTimeout(() => {
             target.style.setProperty("--rotate-x", posY * 5);
             target.style.setProperty("--rotate-y", -posX * 5);
-        }, 200);
+        }, apply_delay);
 
     }, [clientX, clientY]);
 
