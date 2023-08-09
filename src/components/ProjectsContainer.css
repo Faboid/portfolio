@@ -4,7 +4,17 @@
     --rotation-delay: 3ms;
     --rotation-degrees: 10deg;
     --transition-timing: linear;
-    --text-rotation-distance-multiplier: 0.188rem;
+    --shadows-rotation-distance-multiplier-x: 0.188rem;
+    --shadows-rotation-distance-multiplier-y: -0.188rem;
+    --text-shadows-offset-x: -3px;
+    --text-shadows-offset-y: 4px;
+    --text-shadows-blur: 0.18rem;
+    --text-shadows-color: black;
+    --border-shadows-offset-x: -10px;
+    --border-shadows-offset-y: 10px;
+    --border-shadows-blur: 25px;
+    --border-shadows-size: 5px;
+    --border-shadows-color: #000000AA;
 }
 
 .projects-container {
@@ -27,9 +37,6 @@
     grid-auto-flow: row;
     grid-auto-rows: minmax(0, 1fr);
 
-    box-shadow: 
-        inset 2px -2px 5px 1px black,
-        -10px 10px 20px 5px black;
     position: relative;
 
     transition: var(--rotation-time);
@@ -38,13 +45,21 @@
     transform: rotate3d(var(--rotate-x, 0), var(--rotate-y, 0), 0, var(--rotation-degrees));
 }
 
+.border-shadow-rotation {
+    --border-shadows-x: calc(var(--rotate-y) * var(--shadows-rotation-distance-multiplier-x) + var(--border-shadows-offset-x));
+    --border-shadows-y: calc(var(--rotate-x) * var(--shadows-rotation-distance-multiplier-y) + var(--border-shadows-offset-y));
+
+    box-shadow: var(--border-shadows-x) var(--border-shadows-y) var(--border-shadows-blur) var(--border-shadows-size) var(--border-shadows-color);
+}
+
 .text-shadow-rotation {
-    --offset-x: calc(var(--rotate-y) * var(--text-rotation-distance-multiplier) - 3px);
-    --offset-y: calc(var(--rotate-x) * var(--text-rotation-distance-multiplier) + 4px);
+    --text-shadows-x: calc(var(--rotate-y) * var(--shadows-rotation-distance-multiplier-x) + var(--text-shadows-offset-x));
+    --text-shadows-y: calc(var(--rotate-x) * var(--shadows-rotation-distance-multiplier-y) + var(--text-shadows-offset-y));
+
     transition: var(--rotation-time);
     transition-timing-function: var(--transition-timing);
     transition-delay: var(--rotation-delay);
-    text-shadow: var(--offset-x) var(--offset-y) 0.19rem rgba(0, 0, 0, 1);
+    text-shadow: var(--text-shadows-x) var(--text-shadows-y) var(--text-shadows-blur) var(--text-shadows-color);
 }
 
 .project-bg {

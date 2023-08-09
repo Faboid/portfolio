@@ -112,7 +112,7 @@ function Project({ project, getParentRect, lightX, lightY, clientX, clientY }) {
     }, [clientX, clientY]);
 
     return (
-        <div className='project' ref={projDiv}>
+        <div className='project border-shadow-rotation' ref={projDiv}>
 
             <div className='project-bg'>
                 <div ref={projLight} className='project-light'></div>
