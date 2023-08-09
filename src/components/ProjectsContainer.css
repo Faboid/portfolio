@@ -60,12 +60,12 @@
 .project-light {
     height: 100%;
     width: 100%;
-    background: radial-gradient(20rem circle at var(--mouse-x) var(--mouse-y), #AAAAFF44, transparent 50%);
-    transition: 3s;
-    opacity: 0.5;
+    background: radial-gradient(20rem circle at var(--mouse-x) var(--mouse-y), #AAAAFF22, transparent 50%);
+    transition: 200ms;
+    opacity: 0.2;
 }
 
-.project-light:hover {
+.project:hover .project-light {
     opacity: 1;
 }
 
