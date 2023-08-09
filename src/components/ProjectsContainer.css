@@ -49,6 +49,9 @@
     --border-shadows-x: calc(var(--rotate-y) * var(--shadows-rotation-distance-multiplier-x) + var(--border-shadows-offset-x));
     --border-shadows-y: calc(var(--rotate-x) * var(--shadows-rotation-distance-multiplier-y) + var(--border-shadows-offset-y));
 
+    transition: var(--rotation-time);
+    transition-timing-function: var(--transition-timing);
+    transition-delay: var(--rotation-delay);
     box-shadow: var(--border-shadows-x) var(--border-shadows-y) var(--border-shadows-blur) var(--border-shadows-size) var(--border-shadows-color);
 }
 
@@ -94,15 +97,13 @@
     padding-right: 0.5rem;
 }
 
-.project-image-area {
-    overflow: hidden;
-}
-
 .project-image {
     max-width: 65%;
     max-height: 100%;
     cursor: pointer;
     z-index: 1;
+    --border-shadows-blur: 25px;
+    --border-shadows-size: 1px;
 }
 
 .project-tech-area {

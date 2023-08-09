@@ -130,7 +130,7 @@ function Project({ project, getParentRect, lightX, lightY, clientX, clientY }) {
             </div>
 
             <div className='project-image-area'>
-                <ZoomableImage imagePath={project.image} normalStyle="project-image"/>
+                <ZoomableImage imagePath={project.image} normalStyle="project-image border-shadow-rotation"/>
             </div>
 
             <div className='project-tech-area'>
