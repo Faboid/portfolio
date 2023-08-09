@@ -1,7 +1,8 @@
 
 :root {
-    --rotate-time: 200ms;
+    --rotation-time: 200ms;
     --rotation-delay: 10ms;
+    --rotation-degrees: 10deg;
     --transition-timing: linear;
     --text-rotation-distance-multiplier: 0.188rem;
 }
@@ -31,16 +32,16 @@
         -10px 10px 20px 5px black;
     position: relative;
 
-    transition: var(--rotate-time);
+    transition: var(--rotation-time);
     transition-timing-function: var(--transition-timing);
     transition-delay: var(--rotation-delay);
-    transform: rotate3d(var(--rotate-x, 0), var(--rotate-y, 0), 0, 10deg);
+    transform: rotate3d(var(--rotate-x, 0), var(--rotate-y, 0), 0, var(--rotation-degrees));
 }
 
 .text-shadow-rotation {
     --offset-x: calc(var(--rotate-y) * var(--text-rotation-distance-multiplier) - 3px);
     --offset-y: calc(var(--rotate-x) * var(--text-rotation-distance-multiplier) + 4px);
-    transition: var(--rotate-time);
+    transition: var(--rotation-time);
     transition-timing-function: var(--transition-timing);
     transition-delay: var(--rotation-delay);
     text-shadow: var(--offset-x) var(--offset-y) 0.19rem rgba(0, 0, 0, 1);
