@@ -1,6 +1,7 @@
 
 :root {
     --rotate-time: 200ms;
+    --rotation-delay: 10ms;
     --transition-timing: linear;
     --text-rotation-distance-multiplier: 0.188rem;
 }
@@ -32,6 +33,7 @@
 
     transition: var(--rotate-time);
     transition-timing-function: var(--transition-timing);
+    transition-delay: var(--rotation-delay);
     transform: rotate3d(var(--rotate-x, 0), var(--rotate-y, 0), 0, 10deg);
 }
 
@@ -40,6 +42,7 @@
     --offset-y: calc(var(--rotate-x) * var(--text-rotation-distance-multiplier) + 4px);
     transition: var(--rotate-time);
     transition-timing-function: var(--transition-timing);
+    transition-delay: var(--rotation-delay);
     text-shadow: var(--offset-x) var(--offset-y) 0.19rem rgba(0, 0, 0, 1);
 }
 
