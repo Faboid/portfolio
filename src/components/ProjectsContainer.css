@@ -38,20 +38,21 @@
     grid-auto-rows: minmax(0, 1fr);
 
     position: relative;
+    transform: rotate3d(var(--rotate-x, 0), var(--rotate-y, 0), 0, var(--rotation-degrees));
+}
 
+.project,
+.border-shadow-rotation,
+.text-shadow-rotation {
     transition: var(--rotation-time);
     transition-timing-function: var(--transition-timing);
     transition-delay: var(--rotation-delay);
-    transform: rotate3d(var(--rotate-x, 0), var(--rotate-y, 0), 0, var(--rotation-degrees));
 }
 
 .border-shadow-rotation {
     --border-shadows-x: calc(var(--rotate-y) * var(--shadows-rotation-distance-multiplier-x) + var(--border-shadows-offset-x));
     --border-shadows-y: calc(var(--rotate-x) * var(--shadows-rotation-distance-multiplier-y) + var(--border-shadows-offset-y));
 
-    transition: var(--rotation-time);
-    transition-timing-function: var(--transition-timing);
-    transition-delay: var(--rotation-delay);
     box-shadow: var(--border-shadows-x) var(--border-shadows-y) var(--border-shadows-blur) var(--border-shadows-size) var(--border-shadows-color);
 }
 
@@ -59,9 +60,6 @@
     --text-shadows-x: calc(var(--rotate-y) * var(--shadows-rotation-distance-multiplier-x) + var(--text-shadows-offset-x));
     --text-shadows-y: calc(var(--rotate-x) * var(--shadows-rotation-distance-multiplier-y) + var(--text-shadows-offset-y));
 
-    transition: var(--rotation-time);
-    transition-timing-function: var(--transition-timing);
-    transition-delay: var(--rotation-delay);
     text-shadow: var(--text-shadows-x) var(--text-shadows-y) var(--text-shadows-blur) var(--text-shadows-color);
 }
 
