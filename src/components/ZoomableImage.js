@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import './ZoomableImage.css';
 
 export default function ZoomableImage({ imagePath, normalStyle }) {
@@ -16,13 +17,22 @@ export default function ZoomableImage({ imagePath, normalStyle }) {
         <>
             <img onMouseDown={() => setFocused(true)} className={normalStyle + " clicked-image"} src={fullPath} alt="view"/>
 
-            <div className='full-screen' onMouseDown={() => setFocused(false)}>
-                <div className='img-container'>
-                    <img className="full-image" src={fullPath} alt="view"/>
-                </div>
-            </div>
+            {createPortal(
+                <FullImage src={fullPath} onMouseDown={() => setFocused(false)}/>,
+                document.body
+            )}
 
         </>
     );
 
+}
+
+function FullImage({ src, onMouseDown }) {
+    return (
+        <div className='full-screen' onMouseDown={onMouseDown}>
+            <div className='img-container'>
+                <img className="full-image" src={src} alt="view"/>
+            </div>
+        </div>
+    );
 }

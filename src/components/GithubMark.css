@@ -8,13 +8,6 @@
     --image: url('/public/images/logos/github-mark.svg');
 }
 
-.github-mark {
-    display: inline-block;
-    height: var(--github-mark-size);
-    aspect-ratio: 1/1;
-    border: 0px;
-}   
-
 .github-link {
     display: inline-block;
     height: var(--github-mark-size);
