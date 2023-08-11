@@ -122,7 +122,10 @@ function Project({ project, getParentRect, lightX, lightY, clientX, clientY }) {
 
                 <div className='project-header'>
                     <span className='project-title text-shadow-rotation'>{project.title}</span>
-                    <GithubMark link={project.github}/>
+                    <span className='github-mark-container'>
+                        <GithubMark link={project.github}/>
+                        <span className='github-mark-shadows'></span>
+                    </span>
                 </div>
 
                 <p className='project-description text-shadow-rotation'>{project.description}</p>

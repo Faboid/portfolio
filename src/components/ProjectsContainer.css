@@ -43,7 +43,8 @@
 
 .project,
 .border-shadow-rotation,
-.text-shadow-rotation {
+.text-shadow-rotation,
+.github-mark-shadows {
     transition: var(--rotation-time);
     transition-timing-function: var(--transition-timing);
     transition-delay: var(--rotation-delay);
@@ -56,10 +57,13 @@
     box-shadow: var(--border-shadows-x) var(--border-shadows-y) var(--border-shadows-blur) var(--border-shadows-size) var(--border-shadows-color);
 }
 
-.text-shadow-rotation {
+.text-shadow-rotation,
+.github-mark-shadows {
     --text-shadows-x: calc(var(--rotate-y) * var(--shadows-rotation-distance-multiplier-x) + var(--text-shadows-offset-x));
     --text-shadows-y: calc(var(--rotate-x) * var(--shadows-rotation-distance-multiplier-y) + var(--text-shadows-offset-y));
+}
 
+.text-shadow-rotation {
     text-shadow: var(--text-shadows-x) var(--text-shadows-y) var(--text-shadows-blur) var(--text-shadows-color);
 }
 
@@ -110,6 +114,36 @@
     justify-content: center;
 }
 
+.github-mark-container {
+    display: flex;
+    position: relative;
+    margin:0;
+    padding:0;
+}
+
+.github-mark-shadows {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: var(--text-shadows-y);
+    left: var(--text-shadows-x);
+    filter: blur(var(--text-shadows-blur));
+    z-index: -1;
+}
+
+.github-mark-shadows::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    top:0;
+    left:0;
+    background-color: black;
+    mask: url('/public/images/logos/github-mark.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+}
+
 .tech {
     padding: 0.5rem;
 }
@@ -129,7 +163,12 @@
     }
 
     .text-shadow-rotation {
-        text-shadow: -3px 4px 3px rgba(0, 0, 0, 1);
+        text-shadow: var(--text-shadows-offset-x) var(--text-shadows-offset-y) 3px rgba(0, 0, 0, 1);
+    }
+
+    .github-mark-shadows {
+        top: var(--text-shadows-offset-y);
+        left: var(--text-shadows-offset-x);
     }
 
 }
