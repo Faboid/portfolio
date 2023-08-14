@@ -20,32 +20,6 @@
     gap: 1rem;
 }
 
-.input-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 2px solid white;
-    width:100%;
-}
-
-.input-field {
-    outline: none;
-    padding: 0.2rem;
-    width:100%;
-    background: linear-gradient(to bottom, transparent, #FFFFFF06);
-    border: none;
-    border-color: transparents;
-    color: white;
-    font-size: 80%;
-}
-
-textarea.input-field {
-    resize: vertical;
-    min-height: 5rem;
-    max-height: 10rem;
-    width: 100%;
-}
-
 .submit-button {
     font-size: 100%;
     border: 2px white solid;
