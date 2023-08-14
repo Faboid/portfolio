@@ -8,7 +8,7 @@ export default function FormInputField({ name, placeholder, multiline }) {
 
     function CheckIfEmpty(e) {
         let status = e.target.value.length > 0;
-        if(status != hasValue) {
+        if(status !== hasValue) {
             setHasValue(() => status);
         }
     }
