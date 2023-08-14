@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './ContactForm.css';
 
 //needs: name, email, text message
@@ -22,8 +23,21 @@ export default function ContactForm() {
                 <textarea name='message' placeholder='Message' className='input-field'/>
             </div>
 
-            <button className='submit-button'>Send</button>
+            <SubmitBtn/>
 
         </div>
     );
+}
+
+function SubmitBtn() {
+
+    const [clicked, setClicked] = useState(false);
+    let btnClassName = 'submit-button ' + (clicked ? 'clicked' : '');
+
+    return <button 
+        className={btnClassName}             
+        onMouseDown={() => setClicked(true)}
+        onAnimationEnd={() => setClicked(false)}
+        disabled={clicked}
+        >Send</button>;
 }

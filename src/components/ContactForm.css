@@ -1,6 +1,6 @@
 
 :root {
-    --surround-space: 30%;
+    --surround-space: 20%;
 }
 
 .contact-form {
@@ -53,10 +53,65 @@ textarea.input-field {
     color: white;
     background: transparent;
     margin-top: 1.5rem;
-    width: 60%;
-    aspect-ratio: 10/1;
-    min-width: 150px;
-    min-height: 30px;
+    height: 3rem;
+    width: 15rem;
+    position: relative;
+    transition: 500ms;
+}
+
+.submit-button:hover {
+    transform: translateY(-5px);
+    border-color: #9999FF;
+}
+
+.submit-button.clicked {
+    animation: button-click-anim 0.5s cubic-bezier(.87, .17, .4, .88) forwards;
+    border-color: #555555;
+    color: #AAAAAA;
+}
+
+@keyframes button-click-anim {
+    0% {
+        scale: 0.9;
+    }
+
+    50% {
+        scale: 1.1;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
+.submit-button::before {
+    content: "";
+    background: transparent;
+    position: absolute;
+    border-radius: 30px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.submit-button.clicked::before {
+    animation: button-border-expand 0.5s ease forwards;
+}
+
+@keyframes button-border-expand {
+    15% {
+        border: #9999FF solid 2px;
+    }
+
+    80% {
+        scale: 1.5;
+        border: #9999FF22 solid 2px;
+    }
+
+    100% {
+        border: transparent solid 2px;
+    }
 }
 
 @media (max-width: 800px) {
