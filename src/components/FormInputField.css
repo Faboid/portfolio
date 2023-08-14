@@ -1,4 +1,5 @@
 .input-container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,4 +23,21 @@ textarea.input-field {
     min-height: 5rem;
     max-height: 10rem;
     width: 100%;
+}
+
+.input-label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0.2rem;
+    font-size: 55%;
+    opacity: 0;
+    transition: 500ms;
+    transform: rotateX(-90deg);
+}
+
+.input-label.show {
+    transform: rotateX(0deg);
+    top: -1rem;
+    opacity: 1;
 }
