@@ -1,35 +1,51 @@
-import { useState } from 'react';
-import './ContactForm.css';
+import { useRef, useState } from 'react';
 import FormInputField from './FormInputField';
+import './ContactForm.css';
 
 //needs: name, email, text message
 
-export default function ContactForm() {
+export default function ContactForm({ emailcode }) {
+
+    const formRef = useRef(null);
+    const formAction = "https://formsubmit.co/" + emailcode;
+
+    function handleSubmit(e) {
+        //implement validation
+        console.log("submitting");
+        formRef.current.submit();
+    }
 
     return (
-        <div className='contact-form'>
+        <form action={formAction} ref={formRef} method="POST" className='contact-form'>
 
             <div className='main-info'>
-                <FormInputField name={"name"} placeholder={"Name"}/>
-                <FormInputField name={"email"} placeholder={"Email"}/>
+                <FormInputField type={"text"} name={"name"} placeholder={"Name"}/>
+                <FormInputField type={"email"} name={"email"} placeholder={"Email"}/>
             </div>
 
-            <FormInputField name={"message"} placeholder={"Message"} multiline={true}/>
-            <SubmitBtn/>
+            <FormInputField type={"text"} name={"message"} placeholder={"Message"} multiline={true}/>
+            <SubmitBtn submitForm={handleSubmit}/>
 
-        </div>
+        </form>
     );
 }
 
-function SubmitBtn() {
+function SubmitBtn({ submitForm }) {
 
     const [clicked, setClicked] = useState(false);
     let btnClassName = 'submit-button ' + (clicked ? 'clicked' : '');
 
+    function onSubmit(e) {
+        console.log(e);
+        setClicked(true);
+        submitForm(e);
+    }
+
     return <button 
         className={btnClassName}             
-        onMouseDown={() => setClicked(true)}
+        onClick={(e) => onSubmit(e)}
         onAnimationEnd={() => setClicked(false)}
         disabled={clicked}
+        type='submit'
         >Send</button>;
 }

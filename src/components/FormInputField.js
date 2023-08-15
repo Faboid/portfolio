@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './FormInputField.css';
 
-export default function FormInputField({ name, placeholder, multiline }) {
+export default function FormInputField({ name, type, placeholder, multiline }) {
 
     const [hasValue, setHasValue] = useState(false);
     const labelClass = "input-label " + ((hasValue) ? "show" : "");
@@ -14,8 +14,8 @@ export default function FormInputField({ name, placeholder, multiline }) {
     }
 
     const inputField = (multiline) ?
-        <textarea name={name} placeholder={placeholder} onChange={(e) => CheckIfEmpty(e)} className='input-field'/> :
-        <input name={name} placeholder={placeholder} onChange={(e) => CheckIfEmpty(e)} className='input-field'/>;
+        <textarea type={type} name={name} placeholder={placeholder} onChange={(e) => CheckIfEmpty(e)} className='input-field'/> :
+        <input type={type} name={name} placeholder={placeholder} onChange={(e) => CheckIfEmpty(e)} className='input-field'/>;
 
     return (
         <div className='input-container'>

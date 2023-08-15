@@ -6,6 +6,7 @@ import config from '../config.json';
 export default function Contact() {
 
     const contactHeader = "Contact Me";
+    const emailcode = config['emailcode'];
 
     return (
         <div id='contact' className="contact">
@@ -13,7 +14,7 @@ export default function Contact() {
             <h3 data-content={contactHeader} className='contact-section-header'>{contactHeader}</h3>
             {/*<ContactForm/>*/}
             <Spacer height={"min(10vh, 4rem)"}/>
-            <ContactForm/>
+            <ContactForm emailcode={emailcode}/>
         </div>
     );
 };
