@@ -7,16 +7,24 @@ import './ContactForm.css';
 export default function ContactForm({ emailcode }) {
 
     const formRef = useRef(null);
+    const honRef = useRef();
     const formAction = "https://formsubmit.co/" + emailcode;
 
     function handleSubmit(e) {
-        //implement validation
+
+        if(honRef.current.value != "base") {
+            console.log("suspected bot form submission");
+            return;
+        }
+
         console.log("submitting");
         formRef.current.submit();
     }
 
     return (
         <form action={formAction} ref={formRef} method="POST" className='contact-form'>
+
+            <input ref={honRef} type="text" value="base" name='defined' className='hon-field'/>
 
             <div className='main-info'>
                 <FormInputField type={"text"} name={"name"} placeholder={"Name"}/>
