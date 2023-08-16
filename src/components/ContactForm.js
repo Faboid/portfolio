@@ -4,7 +4,7 @@ import './ContactForm.css';
 
 //needs: name, email, text message
 
-export default function ContactForm({ emailcode }) {
+export default function ContactForm({ emailcode, onSubmitSuccess, onSubmitFailure, onSubmitError }) {
 
     const [pending, setPending] = useState(false);
     const urlSubmit = "https://formsubmit.co/ajax/" + emailcode;
@@ -31,8 +31,14 @@ export default function ContactForm({ emailcode }) {
         console.log("sending email");
         fetch(urlSubmit, args)
             .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error(error))
+            .then(data => {
+                if(data.success === "true") {
+                    onSubmitSuccess(data);
+                } else {
+                    onSubmitFailure(data);
+                }
+            })
+            .catch(error => onSubmitError(error))
             .finally(() => setPending(false));
 
     }
