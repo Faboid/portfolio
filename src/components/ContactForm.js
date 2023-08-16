@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import FormInputField from './FormInputField';
 import './ContactForm.css';
 
@@ -6,25 +6,44 @@ import './ContactForm.css';
 
 export default function ContactForm({ emailcode }) {
 
-    const formRef = useRef(null);
-    const honRef = useRef();
-    const formAction = "https://formsubmit.co/" + emailcode;
+    const urlSubmit = "https://formsubmit.co/ajax/" + emailcode;
 
     function handleSubmit(e) {
+        e.preventDefault();
 
-        if(honRef.current.value != "base") {
-            console.log("suspected bot form submission");
+        const data = e.target;
+
+        //check honey
+        if(data.defined.value !== "base") {
+            console.log("aborted email submission: suspected bot");
             return;
         }
+        
+        const headers = {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+        
+        const body = JSON.stringify({
+            name: data.name.value,
+            email: data.email.value,
+            message: data.message.value
+        });
+        
+        const args = { method: 'POST', headers: headers, body: body };
 
-        console.log("submitting");
-        formRef.current.submit();
+        console.log("sending email");
+        fetch(urlSubmit, args)
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+
     }
 
     return (
-        <form action={formAction} ref={formRef} method="POST" className='contact-form'>
+        <form onSubmit={e => handleSubmit(e)} className='contact-form'>
 
-            <input ref={honRef} type="text" value="base" name='defined' className='hon-field'/>
+            <input type="text" defaultValue="base" name='defined' className='hon-field'/>
 
             <div className='main-info'>
                 <FormInputField type={"text"} name={"name"} placeholder={"Name"}/>
@@ -51,7 +70,6 @@ function SubmitBtn({ submitForm }) {
 
     return <button 
         className={btnClassName}             
-        onClick={(e) => onSubmit(e)}
         onAnimationEnd={() => setClicked(false)}
         disabled={clicked}
         type='submit'
