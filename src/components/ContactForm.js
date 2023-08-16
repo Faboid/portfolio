@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FormInputField from './FormInputField';
 import './ContactForm.css';
 
@@ -6,6 +6,7 @@ import './ContactForm.css';
 
 export default function ContactForm({ emailcode }) {
 
+    const [pending, setPending] = useState(false);
     const urlSubmit = "https://formsubmit.co/ajax/" + emailcode;
 
     function handleSubmit(e) {
@@ -18,6 +19,25 @@ export default function ContactForm({ emailcode }) {
             console.log("aborted email submission: suspected bot");
             return;
         }
+
+        if(pending) {
+            console.log("stopping spam submissions");
+            return;
+        }
+        
+        const args = buildArgs(data);
+        setPending(true);
+
+        console.log("sending email");
+        fetch(urlSubmit, args)
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error))
+            .finally(() => setPending(false));
+
+    }
+
+    function buildArgs(data) {
         
         const headers = {
             'Content-Type': 'application/json',
@@ -31,12 +51,7 @@ export default function ContactForm({ emailcode }) {
         });
         
         const args = { method: 'POST', headers: headers, body: body };
-
-        console.log("sending email");
-        fetch(urlSubmit, args)
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error(error));
+        return args;
 
     }
 
@@ -51,27 +66,30 @@ export default function ContactForm({ emailcode }) {
             </div>
 
             <FormInputField type={"text"} name={"message"} placeholder={"Message"} multiline={true}/>
-            <SubmitBtn submitForm={handleSubmit}/>
+            <SubmitBtn submitting={pending}/>
 
         </form>
     );
 }
 
-function SubmitBtn({ submitForm }) {
+function SubmitBtn({ submitting }) {
 
     const [clicked, setClicked] = useState(false);
-    let btnClassName = 'submit-button ' + (clicked ? 'clicked' : '');
+    const btnClassName = 'submit-button ' + (clicked ? 'clicked' : '');
 
-    function onSubmit(e) {
-        console.log(e);
-        setClicked(true);
-        submitForm(e);
-    }
+    useEffect(() => {
 
-    return <button 
-        className={btnClassName}             
-        onAnimationEnd={() => setClicked(false)}
-        disabled={clicked}
-        type='submit'
-        >Send</button>;
+        if(submitting) {
+            setClicked(true);
+            return;
+        }
+
+        //if removing "clicked", delay slightly to ensure the animation completes
+        setTimeout(() => {
+            setClicked(false);
+        }, 500);
+
+    }, [submitting]);
+
+    return <button className={btnClassName} disabled={clicked} type='submit'>Send</button>;
 }
