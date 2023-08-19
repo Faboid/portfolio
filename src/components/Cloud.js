@@ -23,7 +23,11 @@ export default function Cloud() {
     return (
         <div className="cloud">
             {spheres.map((item, index) => {
-                return <CloudSphere key={index} left={item.left} top={item.top}/>
+                return <CloudSphere 
+                    key={index} 
+                    left={item.left} 
+                    top={item.top}
+                    />
             })}
         </div>
     );
@@ -31,9 +35,12 @@ export default function Cloud() {
 
 function CloudSphere({ left, top }) {
 
+    const randomDelay = Math.random() * -1 + 's';
+
     const style = {
         "--startX" : left + '%',
-        "--startY" : top + '%'
+        "--startY" : top + '%',
+        "--delay-movement": randomDelay
     }
     
     return <div className="cloud-sphere" style={style}></div>
