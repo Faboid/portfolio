@@ -37,7 +37,7 @@ export default function Contact() {
                 onSubmitFailure={onSubmitFailure}
                 onSubmitError={onSubmitError}
                 />
-            <FormSubmitMessageBox message={resultMessage}/>
+            <FormSubmitMessageBox title={"Thank you!"} message={resultMessage} onClose={() => setResultMessage("")}/>
         </div>
     );
 };

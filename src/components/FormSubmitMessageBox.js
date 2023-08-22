@@ -1,23 +1,29 @@
 import { createPortal } from "react-dom";
 import "./FormSubmitMessageBox.css";
+import { useEffect, useState } from "react";
 
-export default function FormSubmitMessageBox({ message }) {
+export default function FormSubmitMessageBox({ title, message, onClose }) {
 
-    if(message === "") {
-        return;
-    }
+    const [show, setShow] = useState(false);
 
-    console.log(message);
-    return createPortal(<MessageBox message={message}/>, document.body);
+    useEffect(() => {
+        setShow(() => message !== "");
+    }, [message]);
 
+    console.log(show);
+    return createPortal(<MessageBox title={title} message={message} onClose={onClose} show={show}/>, document.body);
 }
 
-function MessageBox({ message }) {
+function MessageBox({ title, message, onClose, show }) {
+
+    const formboxClass = "form-resultbox " + (show ? "show" : "");
+
     return (
         <section className="form-resultbox-wrapper" role="alert">
-            <div className="form-resultbox">
+            <div className={formboxClass}>
+                <p className="form-resultbox-title">{title}</p>
                 <p className="form-resultbox-message">{message}</p>
-                <button className="form-resultbox-okbtn" value={"Ok"}/>
+                <button className="form-resultbox-okbtn" onClick={() => onClose()}>Ok</button>
             </div>
         </section>
     );
