@@ -2,13 +2,18 @@ import { createPortal } from "react-dom";
 import "./FormSubmitMessageBox.css";
 import { useEffect, useState } from "react";
 
-export default function FormSubmitMessageBox({ title, message, onClose }) {
+export default function FormSubmitMessageBox({ title, message, resetState }) {
 
     const [show, setShow] = useState(false);
 
     useEffect(() => {
         setShow(() => message !== "");
     }, [message]);
+
+    function onClose() {
+        setShow(false);
+        setTimeout(resetState, 300);
+    }
 
     console.log(show);
     return createPortal(<MessageBox title={title} message={message} onClose={onClose} show={show}/>, document.body);
