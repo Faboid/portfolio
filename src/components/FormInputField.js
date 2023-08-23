@@ -14,8 +14,8 @@ export default function FormInputField({ name, type, placeholder, multiline }) {
     }
 
     const inputField = (multiline) ?
-        <textarea type={type} name={name} placeholder={placeholder} onChange={(e) => CheckIfEmpty(e)} className='input-field'/> :
-        <input type={type} name={name} placeholder={placeholder} onChange={(e) => CheckIfEmpty(e)} className='input-field'/>;
+        <textarea type={type} required={true} name={name} placeholder={placeholder} onChange={(e) => CheckIfEmpty(e)} className='input-field'/> :
+        <input type={type} required={true} name={name} placeholder={placeholder} onChange={(e) => CheckIfEmpty(e)} className='input-field'/>;
 
     return (
         <div className='input-container'>
