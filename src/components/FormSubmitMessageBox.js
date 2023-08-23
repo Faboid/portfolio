@@ -21,14 +21,25 @@ export default function FormSubmitMessageBox({ title, message, resetState }) {
 
 function MessageBox({ title, message, onClose, show }) {
 
+    const [clicked, setClicked] = useState(false);
     const formboxClass = "form-resultbox " + (show ? "show" : "");
+    const buttonClass = "form-resultbox-okbtn " + (clicked ? "clicked" : "");
+
+    if(show && clicked) {
+        setClicked(() => false);
+    }
+
+    function onClick() {
+        setClicked(() => true);
+        onClose();
+    }
 
     return (
         <section className="form-resultbox-wrapper" role="alert">
             <div className={formboxClass}>
                 <p className="form-resultbox-title">{title}</p>
                 <p className="form-resultbox-message">{message}</p>
-                <button className="form-resultbox-okbtn" onClick={() => onClose()}>Ok</button>
+                <button className={buttonClass} onClick={() => onClick()}>Ok</button>
             </div>
         </section>
     );
