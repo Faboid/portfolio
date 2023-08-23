@@ -39,7 +39,7 @@ function MessageBox({ title, message, onClose, show }) {
             <div className={formboxClass}>
                 <p className="form-resultbox-title">{title}</p>
                 <p className="form-resultbox-message">{message}</p>
-                <button className={buttonClass} onClick={() => onClick()}>Ok</button>
+                <button className={buttonClass} disabled={clicked} onClick={() => onClick()}>Ok</button>
             </div>
         </section>
     );
