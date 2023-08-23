@@ -17,6 +17,7 @@ export default function ContactForm({ emailcode, onSubmitSuccess, onSubmitFailur
         //check honey
         if(data.defined.value !== "base") {
             console.log("aborted email submission: suspected bot");
+            onSubmitFailure({ success: false, message: "You've been identified as a bot. If you're not, an extension you're using might be causing issues." });
             return;
         }
 
