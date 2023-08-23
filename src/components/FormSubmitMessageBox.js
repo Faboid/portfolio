@@ -15,7 +15,6 @@ export default function FormSubmitMessageBox({ title, message, resetState }) {
         setTimeout(resetState, 300);
     }
 
-    console.log(show);
     return createPortal(<MessageBox title={title} message={message} onClose={onClose} show={show}/>, document.body);
 }
 
