@@ -7,23 +7,32 @@ import { useState } from 'react';
 
 export default function Contact() {
 
+    const [resultTitle, setResultTitle] = useState("");
     const [resultMessage, setResultMessage] = useState("");
     const contactHeader = "Contact Me";
     const emailcode = config['emailcode'];
 
     function onSubmitSuccess(data) {
         console.log("The message has been submitted successfully.", data);
-        setResultMessage(data.message);
+        setResultMessage(() => data.message);
+        setResultTitle(() => "Thank you!");
     }
 
     function onSubmitFailure(data) {
         console.warn("The message has failed to be submitted.", data);
-        setResultMessage(data.message);
+        setResultMessage(() => data.message);
+        setResultTitle("There has been an error.");
     }
 
     function onSubmitError(error) {
         console.error("There has been an error trying to submit the message.", error);
-        setResultMessage(error.message);
+        setResultMessage(() => error.message);
+        setResultTitle("There has been an error.")
+    }
+
+    function resetMessageStatus() {
+        setResultTitle("");
+        setResultMessage("");
     }
 
     return (
@@ -37,7 +46,7 @@ export default function Contact() {
                 onSubmitFailure={onSubmitFailure}
                 onSubmitError={onSubmitError}
                 />
-            <FormSubmitMessageBox title={"Thank you!"} message={resultMessage} resetState={() => setResultMessage("")}/>
+            <FormSubmitMessageBox title={resultTitle} message={resultMessage} resetState={resetMessageStatus}/>
         </div>
     );
 };
