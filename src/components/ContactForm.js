@@ -6,6 +6,7 @@ import './ContactForm.css';
 
 export default function ContactForm({ emailcode, onSubmitSuccess, onSubmitFailure, onSubmitError }) {
 
+    const [submissionAttempted, setSubmissionAttempted] = useState(false);
     const [pending, setPending] = useState(false);
     const urlSubmit = "https://formsubmit.co/ajax/" + emailcode;
 
@@ -68,11 +69,11 @@ export default function ContactForm({ emailcode, onSubmitSuccess, onSubmitFailur
             <input type="text" defaultValue="base" name='defined' className='hon-field'/>
 
             <div className='main-info'>
-                <FormInputField type={"text"} name={"name"} placeholder={"Name"}/>
-                <FormInputField type={"email"} name={"email"} placeholder={"Email"}/>
+                <FormInputField type={"text"} name={"name"} placeholder={"Name"} onSubmissionAttempt={() => setSubmissionAttempted(true)} submissionAttempted={submissionAttempted}/>
+                <FormInputField type={"email"} name={"email"} placeholder={"Email"} onSubmissionAttempt={() => setSubmissionAttempted(true)} submissionAttempted={submissionAttempted}/>
             </div>
 
-            <FormInputField type={"text"} name={"message"} placeholder={"Message"} multiline={true}/>
+            <FormInputField type={"text"} name={"message"} placeholder={"Message"} multiline={true} onSubmissionAttempt={() => setSubmissionAttempted(true)} submissionAttempted={submissionAttempted}/>
             <SubmitBtn submitting={pending}/>
 
         </form>
