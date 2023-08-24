@@ -2,8 +2,13 @@ import './Underwater.css';
 
 export default function Underwater({ children }) {
 
-    const bubblesAmount = Math.floor(Math.min(200, window.innerWidth / 20)) + 1;
-    const maxDelay = Math.floor(window.innerHeight * 30);
+    const bubblesAmount = clamp(20, Math.floor(window.innerWidth / 30), 100);
+    const maxDelay = Math.floor(window.innerHeight * 100);
+    console.log(bubblesAmount);
+
+    function clamp(min, value, max) {
+        return Math.min(Math.max(min, value), max);
+    }
 
     return (
         <div className='underwater-container'>
@@ -40,7 +45,7 @@ function Bubbles({ amount, maxDelay }) {
 function Bubble({ position, delay }) {
 
     return (
-        <div className='bubble' style={{ left: `${position}%`, animationDelay: `${delay}ms` }}></div>
+        <div className='bubble' style={{ left: `${position}%`, animationDelay: `${-delay}ms` }}></div>
     );
 
 }
