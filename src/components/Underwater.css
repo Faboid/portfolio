@@ -28,7 +28,7 @@
     border-radius: 100%;
     aspect-ratio: 1/1;
     animation:
-        rise-up 20s infinite ease-out,
+        rise-up 50s infinite ease-out,
         movement 3s infinite ease-in-out alternate,
         resizing 2s infinite ease-in-out alternate;
 }
