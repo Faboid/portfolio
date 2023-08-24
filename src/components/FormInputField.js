@@ -30,6 +30,11 @@ export default function FormInputField({ name, type, placeholder, submissionAtte
     function evaluateError(value) {
         let error = validate(value);
 
+        //ignore if it's the same
+        if(error === errorMessage) {
+            return;
+        }
+
         if(error) {
             console.log("Error in field " + name + ": " + error);
         }
