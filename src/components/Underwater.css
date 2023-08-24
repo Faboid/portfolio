@@ -1,6 +1,7 @@
 
 :root {
-    --deep-sea: #00080d;
+    --sea-surface: #2222AA;
+    --deep-sea: #000022;
 }
 
 .underwater-container {
@@ -13,7 +14,7 @@
     width: 100%;
     background: 
         linear-gradient(to bottom, transparent 60%, var(--deep-sea)),
-        radial-gradient(ellipse at 90% 10%, #2222AA, var(--deep-sea));
+        radial-gradient(ellipse at 90% 10%, var(--sea-surface), var(--deep-sea));
     z-index: -1;
     overflow:hidden;
 }
