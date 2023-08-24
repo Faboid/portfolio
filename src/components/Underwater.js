@@ -4,7 +4,6 @@ export default function Underwater({ children }) {
 
     const bubblesAmount = clamp(20, Math.floor(window.innerWidth / 30), 100);
     const maxDelay = Math.floor(window.innerHeight * 100);
-    console.log(bubblesAmount);
 
     function clamp(min, value, max) {
         return Math.min(Math.max(min, value), max);
