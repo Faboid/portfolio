@@ -15,22 +15,40 @@ export default function FormInputField({ name, type, placeholder, submissionAtte
         }
 
         if(submissionAttempted) {
-            setError(e.target.validationMessage);
+            evaluateError(e.target.value);
         }
     }
 
     function onInvalid(e) {
         e.preventDefault();
         onSubmissionAttempt();
-        setError(e.target.validationMessage);
+        evaluateError(e.target.value);
     }
 
-    function setError(error) {
+    function evaluateError(value) {
+        let error = validate(value);
+
         if(error) {
             console.log("Error in field " + name + ": " + error);
         }
         
         setErrorMessage(error);
+    }
+
+    function validate(value) {
+
+        if(value === "") {
+            return "Please fill out this field.";
+        }
+
+        //regex from https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email#validation
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        if(name === "email" && !emailRegex.test(value)) {
+            return "Please insert a valid email address.";
+        }
+
+        return "";
+
     }
 
     const inputField = (multiline) ?
