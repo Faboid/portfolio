@@ -7,6 +7,8 @@ export default function FormInputField({ name, type, placeholder, submissionAtte
     const [errorMessage, setErrorMessage] = useState("");
     const [hasValue, setHasValue] = useState(false);
     const labelClass = "input-label " + ((hasValue) ? "show" : "");
+    const fieldClass = "input-field " + ((errorMessage !== "") ? "invalid" : "");
+    const containerClass = "input-container " + ((errorMessage !== "") ? "invalid" : "");
 
     function CheckIfEmpty(e) {
         let status = e.target.value.length > 0;
@@ -52,11 +54,11 @@ export default function FormInputField({ name, type, placeholder, submissionAtte
     }
 
     const inputField = (multiline) ?
-        <textarea type={type} onInvalid={onInvalid} required={true} name={name} placeholder={placeholder} onChange={CheckIfEmpty} className='input-field'/> :
-        <input type={type} onInvalid={onInvalid} required={true} name={name} placeholder={placeholder} onChange={CheckIfEmpty} className='input-field'/>;
+        <textarea type={type} onInvalid={onInvalid} required={true} name={name} placeholder={placeholder} onChange={CheckIfEmpty} className={fieldClass}/> :
+        <input type={type} onInvalid={onInvalid} required={true} name={name} placeholder={placeholder} onChange={CheckIfEmpty} className={fieldClass}/>;
 
     return (
-        <div className='input-container'>
+        <div className={containerClass}>
             <label className={labelClass} htmlFor={name}>{placeholder}</label>
             {inputField}
             <Visible show={submissionAttempted && errorMessage !== ""}>

@@ -16,6 +16,10 @@
     transition: border-bottom 500ms;
 }
 
+.input-container.invalid {
+    border-bottom: 2px solid var(--input-error-text-color);
+}
+
 .input-field {
     outline: none;
     padding: 0.2rem;
@@ -28,11 +32,7 @@
     font-size: 80%;
 }
 
-.input-container:has(.input-field:invalid) {
-    border-bottom: 2px solid var(--input-error-text-color);
-}
-
-.input-field:invalid {
+.input-field.invalid {
     background: var(--input-field-invalid-bg);
 }
 
