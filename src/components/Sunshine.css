@@ -1,6 +1,7 @@
 
 .sunshine-container {
-    position: relative;
+    position: sticky;
+    top:0;
 }
 
 .sunshine {
