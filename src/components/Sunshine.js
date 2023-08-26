@@ -1,7 +1,8 @@
-import {useEffect, useMemo, useState} from "react";
+import { useMemo } from "react";
+import useScroll from "../hooks/useScroll";
 import "./Sunshine.css";
 
-export default function Sunshine({children}) {
+export default function Sunshine({ children }) {
     return (
         <div className="sunshine-container">
             <div className="sunshine">
@@ -17,22 +18,8 @@ export default function Sunshine({children}) {
 }
 
 function Obscurer() {
-    const [obscurerAlpha, setObscurerAlpha] = useState(0);
-
-    useEffect(() => {
-        document.addEventListener("scroll", handleScroll);
-
-        return () => {
-            document.removeEventListener("scroll", handleScroll);
-        };
-
-        function handleScroll(e) {
-            const alpha = Math.min(0.8, window.scrollY / window.innerHeight).toFixed(2);
-            setObscurerAlpha(alpha);
-        }
-    });
-
-    return <div style={{"--alpha": obscurerAlpha}} className="sunshine-obscurer"></div>;
+    const obscurerAlpha = useScroll(0, 0.8, 2);
+    return <div style={{ "--alpha": obscurerAlpha }} className="sunshine-obscurer"></div>;
 }
 
 function Sun() {
