@@ -50,10 +50,10 @@ function Star({maxSize, sunPercentageXPos}) {
         const positionX = Math.floor(seed * 100);
         const positionY = Math.floor(Math.random() * 100);
         return [positionX, positionY];
-    }, []);
+    }, [seed]);
 
     const height = useMemo(() => Math.random() * maxSize, [maxSize]);
-    const opacity = useMemo(() => Math.abs(seed - sunPercentageXPos) % 1, [sunPercentageXPos]);
+    const opacity = useMemo(() => Math.abs(seed - sunPercentageXPos) % 1, [sunPercentageXPos, seed]);
 
     return (
         <div

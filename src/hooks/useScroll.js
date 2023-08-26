@@ -16,7 +16,7 @@ export default function useScroll(min, max, decimals) {
             setScrollY(alpha);
         }
 
-    }, []);
+    }, [min, max, decimals]);
 
     return scrollY;
 
