@@ -14,6 +14,17 @@
     overflow: hidden;
 }
 
+.sunshine-obscurer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, var(--alpha, 0));
+    z-index: 999999;
+    pointer-events: none;
+}
+
 .sun {
     position: absolute;
     left: 80vw;
