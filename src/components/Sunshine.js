@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import {useEffect, useMemo, useState} from "react";
 import "./Sunshine.css";
 
-export default function Sunshine({ children }) {
+export default function Sunshine({children}) {
     return (
         <div className="sunshine-container">
             <div className="sunshine">
@@ -32,7 +32,7 @@ function Obscurer() {
         }
     });
 
-    return <div style={{ "--alpha": obscurerAlpha }} className="sunshine-obscurer"></div>;
+    return <div style={{"--alpha": obscurerAlpha}} className="sunshine-obscurer"></div>;
 }
 
 function Sun() {
@@ -55,12 +55,18 @@ function StarsContainer() {
     );
 }
 
-function Star({ maxSize, sunPercentageXPos }) {
-    const randomX = Math.random();
-    const positionX = Math.floor(randomX * 100);
-    const positionY = Math.floor(Math.random() * 100);
-    const height = Math.random() * maxSize;
-    const opacity = Math.abs(randomX - sunPercentageXPos) % 1;
+function Star({maxSize, sunPercentageXPos}) {
+
+    const seed = useMemo(() => Math.random(), []);
+
+    const [positionX, positionY] = useMemo(() => {
+        const positionX = Math.floor(seed * 100);
+        const positionY = Math.floor(Math.random() * 100);
+        return [positionX, positionY];
+    }, []);
+
+    const height = useMemo(() => Math.random() * maxSize, [maxSize]);
+    const opacity = useMemo(() => Math.abs(seed - sunPercentageXPos) % 1, [sunPercentageXPos]);
 
     return (
         <div
