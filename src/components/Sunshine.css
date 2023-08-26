@@ -1,13 +1,12 @@
-
 .sunshine-container {
     position: sticky;
-    top:0;
+    top: 0;
 }
 
 .sunshine {
     position: absolute;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     height: 100%;
     width: 100%;
     background: radial-gradient(circle at right, #2222AA, black);
@@ -23,6 +22,7 @@
     background-color: rgba(0, 0, 0, var(--alpha, 0));
     z-index: 999999;
     pointer-events: none;
+    transition: 200ms;
 }
 
 .sun {
@@ -33,7 +33,7 @@
     aspect-ratio: 1/1;
     border-radius: 100%;
     background: radial-gradient(circle at right, #ff2222, #ff6600, #ff9900);
-    box-shadow: 
+    box-shadow:
         -5px 15px 150px 50px #ddaa00bb,
         20px -10px 150px 100px #aa550066,
         15px 30px 150px 150px #55330044;
