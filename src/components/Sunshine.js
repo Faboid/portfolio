@@ -7,7 +7,7 @@ export default function Sunshine({ children }) {
         <div className="sunshine-container">
             <div className="sunshine">
                 <StarsContainer />
-                <Sun />
+                {/*<Sun/>*/}
             </div>
 
             {children}
@@ -22,9 +22,9 @@ function Obscurer() {
     return <div style={{ "--alpha": obscurerAlpha }} className="sunshine-obscurer"></div>;
 }
 
-function Sun() {
-    return <div className="sun"></div>;
-}
+//function Sun() {
+//    return <div className="sun"></div>;
+//}
 
 function StarsContainer() {
     let starsAmount = Math.floor((window.innerHeight * window.innerWidth) / 20000);
@@ -36,7 +36,7 @@ function StarsContainer() {
             {Array(starsAmount)
                 .fill(0)
                 .map((_, index) => {
-                    return <Star key={index} maxSize={0.5} sunPercentageXPos={0.8} />;
+                    return <Star key={index} maxSize={0.5} sunPercentageXPos={1} />;
                 })}
         </div>
     );
@@ -53,7 +53,7 @@ function Star({maxSize, sunPercentageXPos}) {
     }, [seed]);
 
     const height = useMemo(() => Math.random() * maxSize, [maxSize]);
-    const opacity = useMemo(() => Math.abs(seed - sunPercentageXPos) % 1, [sunPercentageXPos, seed]);
+    const opacity = useMemo(() => Math.abs(seed - sunPercentageXPos) % 1 + 0.2, [sunPercentageXPos, seed]);
 
     return (
         <div
