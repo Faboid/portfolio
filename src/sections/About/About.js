@@ -1,10 +1,10 @@
-import Navbar from '../components/Navbar';
-import ResumeButton from '../components/ResumeButton';
+import Navbar from './components/Navbar';
+import ResumeButton from './components/ResumeButton';
 import './About.css';
 
 export default function About() {
     return (
-        <div id='about' className="about">
+        <section id='about' className="about">
 
             <Navbar/>
 
@@ -13,7 +13,7 @@ export default function About() {
                 <Description/>
             </div>
             
-        </div>
+        </section>
     );
 }
 
