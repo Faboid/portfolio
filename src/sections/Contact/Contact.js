@@ -36,7 +36,7 @@ export default function Contact() {
     }
 
     return (
-        <div id='contact' className="contact">
+        <section id='contact' className="contact">
             <Spacer height="3vh"/>
             <h3 data-content={contactHeader} className='contact-section-header'>{contactHeader}</h3>
             <Spacer height={"min(10vh, 4rem)"}/>
@@ -47,6 +47,6 @@ export default function Contact() {
                 onSubmitError={onSubmitError}
                 />
             <FormSubmitMessageBox title={resultTitle} message={resultMessage} resetState={resetMessageStatus}/>
-        </div>
+        </section>
     );
 };
