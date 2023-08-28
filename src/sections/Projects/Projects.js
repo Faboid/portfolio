@@ -1,7 +1,7 @@
-import projects from '../data/projects.json';
+import projects from '../../data/projects.json';
+import ProjectsContainer from '../../components/ProjectsContainer';
+import Spacer from '../../components/Spacer';
 import './Projects.css';
-import ProjectsContainer from '../components/ProjectsContainer';
-import Spacer from '../components/Spacer';
 
 export default function Projects() {
 

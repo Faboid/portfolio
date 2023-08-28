@@ -1,10 +1,9 @@
 import './App.css';
 import Sunshine from './components/Sunshine';
 import Underwater from './components/Underwater';
-import About from './sections/About';
-import Contact from './sections/Contact';
-import Projects from './sections/Projects';
-//import Skills from './sections/Skills';
+import About from './sections/About/About';
+import Contact from './sections/Contact/Contact';
+import Projects from './sections/Projects/Projects';
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
       </Sunshine>
 
       <Underwater>
-        {/* <Skills/> */}
         <Projects/>
         <Contact/>
       </Underwater>

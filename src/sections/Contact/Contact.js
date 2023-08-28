@@ -1,8 +1,8 @@
 import './Contact.css';
-import Spacer from '../components/Spacer';
-import ContactForm from '../components/ContactForm';
-import config from '../config.json';
-import FormSubmitMessageBox from '../components/FormSubmitMessageBox';
+import Spacer from '../../components/Spacer';
+import ContactForm from '../../components/ContactForm';
+import config from '../../config.json';
+import FormSubmitMessageBox from '../../components/FormSubmitMessageBox';
 import { useState } from 'react';
 
 export default function Contact() {
