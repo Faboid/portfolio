@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Visible from './Visible';
+import Visible from '../../../components/Visible';
 import './FormInputField.css';
 
 export default function FormInputField({ name, type, placeholder, submissionAttempted, onSubmissionAttempt, multiline }) {
