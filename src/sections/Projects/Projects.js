@@ -1,5 +1,5 @@
 import projects from '../../data/projects.json';
-import ProjectsContainer from '../../components/ProjectsContainer';
+import ProjectsContainer from './components/ProjectsContainer';
 import Spacer from '../../components/Spacer';
 import './Projects.css';
 
