@@ -9,7 +9,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background: radial-gradient(circle at right, #2222AA, black);
+    background: radial-gradient(circle at 100% 15%, #111199, black);
     overflow: hidden;
 }
 
