@@ -1,5 +1,5 @@
-import Navbar from '../../components/Navbar';
-import ResumeButton from '../../components/ResumeButton';
+import Navbar from './components/Navbar';
+import ResumeButton from './components/ResumeButton';
 import './About.css';
 
 export default function About() {
