@@ -95,33 +95,48 @@ function Project({ project, getParentRect, clientX, clientY }) {
         }}>
 
             <ProjectBG getParentRect={getParentRect} clientX={clientX} clientY={clientY}/>
-
-            <div className='project-text-area'>
-
-                <div className='project-header'>
-                    <span className='project-title text-shadow-rotation'>{project.title}</span>
-                    <span className='github-mark-container'>
-                        <GithubMark link={project.github}/>
-                        <span className='github-mark-shadows'></span>
-                    </span>
-                </div>
-
-                <p className='project-description text-shadow-rotation'>{project.description}</p>
-                
-            </div>
-
-            <div className='project-image-area'>
-                <ZoomableImage imagePath={project.image} normalStyle="project-image border-shadow-rotation"/>
-            </div>
-
-            <div className='project-tech-area'>
-                {project.tech.map((element) => {
-                    return (
-                        <span key={element} className='tech text-shadow-rotation'>{element}</span>
-                    );
-                })}
-            </div>
+            <TextArea githubUrl={project.github} title={project.title} description={project.description}/>
+            <ImageArea image={project.image}/>
+            <TechArea techs={project.tech}/>
 
         </div>
+    );
+}
+
+function TextArea({ githubUrl, title, description }) {
+    return (
+        <div className='project-text-area'>
+
+            <div className='project-header'>
+                <span className='project-title text-shadow-rotation'>{title}</span>
+                <span className='github-mark-container'>
+                    <GithubMark link={githubUrl}/>
+                    <span className='github-mark-shadows'></span>
+                </span>
+            </div>
+
+            <p className='project-description text-shadow-rotation'>{description}</p>
+            
+        </div>  
+    );
+}
+
+function ImageArea({ image }) {
+    return (
+        <div className='project-image-area'>
+            <ZoomableImage imagePath={image} normalStyle="project-image border-shadow-rotation"/>
+        </div>
+    );
+}
+
+function TechArea({ techs }) {
+    return (
+        <div className='project-tech-area'>
+            {techs.map((element) => {
+                return (
+                    <span key={element} className='tech text-shadow-rotation'>{element}</span>
+                );
+            })}
+        </div>  
     );
 }
