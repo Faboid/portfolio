@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import useRotationFromPosition from '../hooks/useRotationFromPosition';
 import ProjectBG from './ProjectBG';
 import GithubMark from '../components/GithubMark';
