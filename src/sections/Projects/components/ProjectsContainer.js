@@ -4,7 +4,6 @@ import GithubMark from '../components/GithubMark';
 import ZoomableImage from '../components/ZoomableImage';
 import './ProjectsContainer.css';
 
-
 export default function ProjectsContainer({ projects }) {
 
     const containerDiv = useRef(null);
@@ -38,6 +37,8 @@ export default function ProjectsContainer({ projects }) {
 function Project({ project, getParentRect, clientX, clientY }) {
 
     const projDiv = useRef(null);
+    const [rotateX, setRotateX] = useState(0);
+    const [rotateY, setRotateY] = useState(0);
 
     //handle 3d rotation
     useEffect(() => {
@@ -68,8 +69,8 @@ function Project({ project, getParentRect, clientX, clientY }) {
         if(posX < 0 || posX > 1 || posY < 0 || posY > 1) {
 
             //reset rotation to 0, as it's outside range
-            target.style.setProperty("--rotate-x", 0);
-            target.style.setProperty("--rotate-y", 0);
+            setRotateX(0);
+            setRotateY(0);
 
             return;
         }
@@ -78,13 +79,20 @@ function Project({ project, getParentRect, clientX, clientY }) {
         posX -= 0.5;
         posY -= 0.5;
 
-        target.style.setProperty("--rotate-x", posY * 5);
-        target.style.setProperty("--rotate-y", -posX * 5);
+        //adjust values
+        posX = -posX * 5;
+        posY *= 5;
+
+        setRotateX(posY);
+        setRotateY(posX);
 
     }, [clientX, clientY]);
 
     return (
-        <div className='project border-shadow-rotation' ref={projDiv}>
+        <div className='project border-shadow-rotation' ref={projDiv} style={{
+            "--rotate-x": rotateX,
+            "--rotate-y": rotateY
+        }}>
 
             <ProjectBG getParentRect={getParentRect} clientX={clientX} clientY={clientY}/>
 
