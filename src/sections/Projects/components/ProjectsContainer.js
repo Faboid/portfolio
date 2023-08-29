@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import useRotationFromPosition from '../hooks/useRotationFromPosition';
 import ProjectBG from './ProjectBG';
 import GithubMark from '../components/GithubMark';
 import ZoomableImage from '../components/ZoomableImage';
@@ -37,56 +38,7 @@ export default function ProjectsContainer({ projects }) {
 function Project({ project, getParentRect, clientX, clientY }) {
 
     const projDiv = useRef(null);
-    const [rotateX, setRotateX] = useState(0);
-    const [rotateY, setRotateY] = useState(0);
-
-    //handle 3d rotation
-    useEffect(() => {
-        
-        const target = projDiv.current;
-
-        //get distance to proj(0, 0)
-        const projRect = target.getBoundingClientRect();
-        let x = clientX - projRect.left;
-        let y = clientY - projRect.top;
-
-        //get proj size
-        let height = projRect.bottom - projRect.top;
-        let width = projRect.right - projRect.left;
-
-        //set some offset
-        const offset = 15; //px
-        x += offset;
-        y += offset;
-        height += offset * 2;
-        width += offset * 2; 
-
-        //normalize to percentage
-        let posX = x / width;
-        let posY = y / height;
-        
-        //check for boundaries
-        if(posX < 0 || posX > 1 || posY < 0 || posY > 1) {
-
-            //reset rotation to 0, as it's outside range
-            setRotateX(0);
-            setRotateY(0);
-
-            return;
-        }
-
-        //remove 0.5 to move (0, 0) to the center of the proj
-        posX -= 0.5;
-        posY -= 0.5;
-
-        //adjust values
-        posX = -posX * 5;
-        posY *= 5;
-
-        setRotateX(posY);
-        setRotateY(posX);
-
-    }, [clientX, clientY]);
+    const [rotateX, rotateY] = useRotationFromPosition(() => projDiv.current.getBoundingClientRect(), clientX, clientY, 15, 5);
 
     return (
         <div className='project border-shadow-rotation' ref={projDiv} style={{
