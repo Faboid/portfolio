@@ -7,21 +7,12 @@ import './ProjectsContainer.css';
 export default function ProjectsContainer({ projects }) {
 
     const containerDiv = useRef(null);
-    const [lightX, setLightX] = useState(-2000);
-    const [lightY, setLightY] = useState(-2000);
     const [mouseX, setMouseX] = useState(0);
     const [mouseY, setMouseY] = useState(0);
 
     function onMouseMove(e) {
-
-        const target = containerDiv.current;
-        const rect = target.getBoundingClientRect();
-
-        setLightX(() => e.clientX - rect.left);
-        setLightY(() => e.clientY - rect.top);
         setMouseX(() => e.clientX);
         setMouseY(() => e.clientY);
-
     }
 
     return (
@@ -36,8 +27,6 @@ export default function ProjectsContainer({ projects }) {
                     key={item.title} 
                     project={item} 
                     getParentRect={() => containerDiv.current.getBoundingClientRect()} 
-                    lightX={lightX} 
-                    lightY={lightY}
                     clientX={mouseX}
                     clientY={mouseY}/>;
             })}
@@ -45,27 +34,31 @@ export default function ProjectsContainer({ projects }) {
     );
 }
 
-function Project({ project, getParentRect, lightX, lightY, clientX, clientY }) {
+function Project({ project, getParentRect, clientX, clientY }) {
 
     const projDiv = useRef(null);
-    const projLight = useRef(null);
+
+    const [lightX, setLightX] = useState(0);
+    const [lightY, setLightY] = useState(0);
 
     //handle light
     useEffect(() => {
-        const target = projLight.current;
+        const target = projDiv.current;
         const rect = target.getBoundingClientRect();
         const parent = getParentRect();
 
         //calc
+        const x = clientX - parent.left;
+        const y = clientY - parent.top;
         const xDiff = rect.left - parent.left;
         const yDiff = rect.top - parent.top;
-        const x = lightX - xDiff + 'px';
-        const y = lightY - yDiff + 'px';
+        const newLightX = x - xDiff + 'px';
+        const newLightY = y - yDiff + 'px';
 
-        target.style.setProperty('--mouse-x', x);
-        target.style.setProperty('--mouse-y', y);
+        setLightX(newLightX);
+        setLightY(newLightY);
 
-    }, [getParentRect, lightX, lightY]);
+    }, [getParentRect, clientX, clientY]);
 
     //handle 3d rotation
     useEffect(() => {
@@ -114,9 +107,7 @@ function Project({ project, getParentRect, lightX, lightY, clientX, clientY }) {
     return (
         <div className='project border-shadow-rotation' ref={projDiv}>
 
-            <div className='project-bg'>
-                <div ref={projLight} className='project-light'></div>
-            </div>
+            <ProjectBG lightX={lightX} lightY={lightY}/>
 
             <div className='project-text-area'>
 
@@ -144,6 +135,17 @@ function Project({ project, getParentRect, lightX, lightY, clientX, clientY }) {
                 })}
             </div>
 
+        </div>
+    );
+}
+
+function ProjectBG({ lightX, lightY }) {
+    return (
+        <div className='project-bg'>
+            <div style={{ 
+                "--mouse-x": lightX,
+                "--mouse-y": lightY
+             }} className='project-light'></div>
         </div>
     );
 }
