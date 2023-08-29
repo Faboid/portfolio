@@ -1,0 +1,22 @@
+
+.project-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom right, #11111133, #11111155);
+    z-index: -1;
+}
+
+.project-light {
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(20rem circle at var(--mouse-x) var(--mouse-y), #AAAAFF22, transparent 50%);
+    transition: 200ms;
+    opacity: 0.2;
+}
+
+.project:hover .project-light {
+    opacity: 1;
+}
