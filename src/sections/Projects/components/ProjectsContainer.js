@@ -38,28 +38,6 @@ function Project({ project, getParentRect, clientX, clientY }) {
 
     const projDiv = useRef(null);
 
-    const [lightX, setLightX] = useState(0);
-    const [lightY, setLightY] = useState(0);
-
-    //handle light
-    useEffect(() => {
-        const target = projDiv.current;
-        const rect = target.getBoundingClientRect();
-        const parent = getParentRect();
-
-        //calc
-        const x = clientX - parent.left;
-        const y = clientY - parent.top;
-        const xDiff = rect.left - parent.left;
-        const yDiff = rect.top - parent.top;
-        const newLightX = x - xDiff + 'px';
-        const newLightY = y - yDiff + 'px';
-
-        setLightX(newLightX);
-        setLightY(newLightY);
-
-    }, [getParentRect, clientX, clientY]);
-
     //handle 3d rotation
     useEffect(() => {
         
@@ -107,7 +85,7 @@ function Project({ project, getParentRect, clientX, clientY }) {
     return (
         <div className='project border-shadow-rotation' ref={projDiv}>
 
-            <ProjectBG lightX={lightX} lightY={lightY}/>
+            <ProjectBG getParentRect={getParentRect} clientX={clientX} clientY={clientY}/>
 
             <div className='project-text-area'>
 
@@ -139,9 +117,33 @@ function Project({ project, getParentRect, clientX, clientY }) {
     );
 }
 
-function ProjectBG({ lightX, lightY }) {
+function ProjectBG({ getParentRect, clientX, clientY }) {
+    
+    const bgRef = useRef(null);
+    const [lightX, setLightX] = useState(0);
+    const [lightY, setLightY] = useState(0);
+
+    //handle light
+    useEffect(() => {
+        const target = bgRef.current;
+        const rect = target.getBoundingClientRect();
+        const parent = getParentRect();
+
+        //calc
+        const x = clientX - parent.left;
+        const y = clientY - parent.top;
+        const xDiff = rect.left - parent.left;
+        const yDiff = rect.top - parent.top;
+        const newLightX = x - xDiff + 'px';
+        const newLightY = y - yDiff + 'px';
+
+        setLightX(newLightX);
+        setLightY(newLightY);
+
+    }, [getParentRect, clientX, clientY]);
+
     return (
-        <div className='project-bg'>
+        <div ref={bgRef} className='project-bg'>
             <div style={{ 
                 "--mouse-x": lightX,
                 "--mouse-y": lightY
