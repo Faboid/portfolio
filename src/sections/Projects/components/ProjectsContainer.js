@@ -59,12 +59,14 @@ function ProjectHitScan({ project, getParentRect, clientX, clientY }) {
 function Project({ project, getParentRect, clientX, clientY, rawRotateX, rawRotateY }) {
 
     const [turned, setTurned] = useState(false);
-    const turning = useCooldown(turned, 300);
+    const turningSpeed = 1000;
+    const turning = useCooldown(turned, turningSpeed);
     const projClassName = "project border-shadow-rotation " + (turned ? "turned" : "");    
     
     let style;
     if(turning) {
         style = {
+            "transition": "transform " + turningSpeed + 'ms',
             "--raw-rotate-x": 0,
             "--raw-rotate-y": 0 
         };
