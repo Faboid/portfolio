@@ -14,7 +14,6 @@ export default function useCooldown(onChange, milliseconds) {
         }, milliseconds);
         
         return () => {
-            console.log("cancelled");
             clearTimeout(cancellationID);
         };
         
