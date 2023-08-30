@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import useRotationFromPosition from '../hooks/useRotationFromPosition';
 import ProjectBG from './ProjectBG';
 import GithubMark from '../components/GithubMark';
 import ZoomableImage from '../components/ZoomableImage';
 import './ProjectsContainer.css';
+import useCooldown from '../hooks/useCooldown';
 
 export default function ProjectsContainer({ projects }) {
 
@@ -58,7 +59,7 @@ function ProjectHitScan({ project, getParentRect, clientX, clientY }) {
 function Project({ project, getParentRect, clientX, clientY, rawRotateX, rawRotateY }) {
 
     const [turned, setTurned] = useState(false);
-    const [turning, setTurning] = useState(false);
+    const turning = useCooldown(turned, 300);
     const projClassName = "project border-shadow-rotation " + (turned ? "turned" : "");    
     
     let style;
@@ -73,19 +74,6 @@ function Project({ project, getParentRect, clientX, clientY, rawRotateX, rawRota
             "--raw-rotate-y": rawRotateY 
         };
     }
-    
-    useEffect(() => {
-        
-        setTurning(true);
-        const cancellationID = setTimeout(() => {
-            setTurning(false);
-        }, 300);
-
-        return () => {
-            clearTimeout(cancellationID);
-        }
-        
-    }, [turned]);
     
     return (
         <div className={projClassName} onClick={() => setTurned(prev => !prev)} style={style}>
