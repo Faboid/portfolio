@@ -38,15 +38,17 @@ export default function ProjectsContainer({ projects }) {
 function Project({ project, getParentRect, clientX, clientY }) {
 
     const projDiv = useRef(null);
-    const [rotateX, rotateY] = useRotationFromPosition(() => projDiv.current.getBoundingClientRect(), clientX, clientY, 15, 5);
-
+    const [turned, setTurned] = useState(false);
+    const [rawRotateX, rawRotateY] = useRotationFromPosition(() => projDiv.current.getBoundingClientRect(), clientX, clientY, 15, 5);
+    const projClassName = "project border-shadow-rotation " + (turned ? "turned" : "");    
+    
     return (
-        <div className='project border-shadow-rotation' ref={projDiv} style={{
-            "--rotate-x": rotateX,
-            "--rotate-y": rotateY
+        <div className={projClassName} onClick={() => setTurned(prev => !prev)} ref={projDiv} style={{
+            "--raw-rotate-x": rawRotateX,
+            "--raw-rotate-y": rawRotateY
         }}>
 
-            <ProjectBG getParentRect={getParentRect} clientX={clientX} clientY={clientY}/>
+            <ProjectBG getParentRect={getParentRect} clientX={clientX} clientY={clientY} swapX={turned}/>
             <TextArea githubUrl={project.github} title={project.title} description={project.description}/>
             <ImageArea image={project.image}/>
             <TechArea techs={project.tech}/>

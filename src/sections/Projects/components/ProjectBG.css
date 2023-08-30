@@ -7,6 +7,11 @@
     width: 100%;
     background: linear-gradient(to bottom right, #11111133, #11111155);
     z-index: -1;
+    transition: 200ms;
+}
+
+.project-bg.turned {
+    transform: rotateY(180deg);
 }
 
 .project-light {
