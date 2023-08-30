@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useRotationFromPosition from '../hooks/useRotationFromPosition';
 import ProjectBG from './ProjectBG';
 import GithubMark from '../components/GithubMark';
@@ -24,7 +24,7 @@ export default function ProjectsContainer({ projects }) {
             >
 
             {projects.map(item => {
-                return <Project 
+                return <ProjectHitScan 
                     key={item.title} 
                     project={item} 
                     getParentRect={() => containerDiv.current.getBoundingClientRect()} 
@@ -35,18 +35,60 @@ export default function ProjectsContainer({ projects }) {
     );
 }
 
-function Project({ project, getParentRect, clientX, clientY }) {
-
-    const projDiv = useRef(null);
-    const [turned, setTurned] = useState(false);
-    const [rawRotateX, rawRotateY] = useRotationFromPosition(() => projDiv.current.getBoundingClientRect(), clientX, clientY, 15, 5);
-    const projClassName = "project border-shadow-rotation " + (turned ? "turned" : "");    
+function ProjectHitScan({ project, getParentRect, clientX, clientY }) {
+    
+    const hitscanRef = useRef(null);
+    const [rawRotateX, rawRotateY] = useRotationFromPosition(() => hitscanRef.current.getBoundingClientRect(), clientX, clientY, 15, 5);
     
     return (
-        <div className={projClassName} onClick={() => setTurned(prev => !prev)} ref={projDiv} style={{
+        <div className='hitscan' ref={hitscanRef}>
+            <Project
+                project={project}
+                getParentRect={getParentRect}
+                clientX={clientX}
+                clientY={clientY}
+                rawRotateX={rawRotateX}
+                rawRotateY={rawRotateY}
+                />
+        </div>  
+    );
+    
+}
+
+function Project({ project, getParentRect, clientX, clientY, rawRotateX, rawRotateY }) {
+
+    const [turned, setTurned] = useState(false);
+    const [turning, setTurning] = useState(false);
+    const projClassName = "project border-shadow-rotation " + (turned ? "turned" : "");    
+    
+    let style;
+    if(turning) {
+        style = {
+            "--raw-rotate-x": 0,
+            "--raw-rotate-y": 0 
+        };
+    } else {
+        style = {
             "--raw-rotate-x": rawRotateX,
-            "--raw-rotate-y": rawRotateY
-        }}>
+            "--raw-rotate-y": rawRotateY 
+        };
+    }
+    
+    useEffect(() => {
+        
+        setTurning(true);
+        const cancellationID = setTimeout(() => {
+            setTurning(false);
+        }, 300);
+
+        return () => {
+            clearTimeout(cancellationID);
+        }
+        
+    }, [turned]);
+    
+    return (
+        <div className={projClassName} onClick={() => setTurned(prev => !prev)} style={style}>
 
             <ProjectBG getParentRect={getParentRect} clientX={clientX} clientY={clientY} swapX={turned}/>
             <TextArea githubUrl={project.github} title={project.title} description={project.description}/>
@@ -75,10 +117,10 @@ function TextArea({ githubUrl, title, description }) {
     );
 }
 
-function ImageArea({ image }) {
+function ImageArea({ image, clickable }) {
     return (
         <div className='project-image-area'>
-            <ZoomableImage imagePath={image} normalStyle="project-image border-shadow-rotation"/>
+            <ZoomableImage clickable={clickable} imagePath={image} normalStyle="project-image border-shadow-rotation"/>
         </div>
     );
 }
