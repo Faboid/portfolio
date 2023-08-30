@@ -80,7 +80,7 @@ function Project({ project, getParentRect, clientX, clientY, rawRotateX, rawRota
     return (
         <div className={projClassName} onClick={() => setTurned(prev => !prev)} style={style}>
 
-            <ProjectBG getParentRect={getParentRect} clientX={clientX} clientY={clientY} swapX={turned}/>
+            <ProjectBG getParentRect={getParentRect} clientX={clientX} clientY={clientY} swapX={turned} turnmilliseconds={turningSpeed}/>
             <TextArea githubUrl={project.github} title={project.title} description={project.description}/>
             <ImageArea image={project.image}/>
             <TechArea techs={project.tech}/>
