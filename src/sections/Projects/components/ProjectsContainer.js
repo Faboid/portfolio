@@ -60,7 +60,7 @@ function Project({ project, getParentRect, clientX, clientY, rawRotateX, rawRota
 
     const [turned, setTurned] = useState(false);
     const turningSpeed = 1000;
-    const turning = useCooldown(turned, Math.max(200, turningSpeed - 200));
+    const turning = useCooldown(turned, Math.max(200, turningSpeed - 100));
     const projClassName = "project border-shadow-rotation " + (turned ? "turned" : "");    
     
     let style;
@@ -82,7 +82,7 @@ function Project({ project, getParentRect, clientX, clientY, rawRotateX, rawRota
 
             <ProjectBG getParentRect={getParentRect} clientX={clientX} clientY={clientY} swapX={turned} turnmilliseconds={turningSpeed}/>
             <TextArea githubUrl={project.github} title={project.title} description={project.description}/>
-            <ImageArea image={project.image}/>
+            <ImageArea image={project.image} turned={turned}/>
             <TechArea techs={project.tech}/>
 
         </div>
@@ -107,10 +107,20 @@ function TextArea({ githubUrl, title, description }) {
     );
 }
 
-function ImageArea({ image, clickable }) {
+function ImageArea({ image, clickable, turned }) {
+    
+    //todo - calculate the delay based on the turning speed
+    let style = {
+        "transitionDelay": "0.2s"
+    };
+    if(turned) {
+        style["opacity"] = "0";
+        style["pointerEvents"] = "none";
+    }
+    
     return (
-        <div className='project-image-area'>
-            <ZoomableImage clickable={clickable} imagePath={image} normalStyle="project-image border-shadow-rotation"/>
+        <div className='project-image-area' style={style}>
+            <ZoomableImage turned={turned} clickable={clickable} imagePath={image} normalStyle="project-image border-shadow-rotation"/>
         </div>
     );
 }
