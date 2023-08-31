@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import resume from '../../../data/resume.pdf'
 import './ResumeButton.css';
 
 export default function ResumeButton() {
@@ -8,10 +9,12 @@ export default function ResumeButton() {
     
     function onClick(e) {
         setClicked(true);
+        const pdfWindow = window.open();
+        pdfWindow.location.href = resume;
     }
     
     return (
-        <button 
+        <button
             className={btnClassName} 
             disabled={clicked}
             onClick={e => onClick(e)}
