@@ -74,6 +74,16 @@
 
 .back-project-card {
     transform: rotateY(180deg);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    justify-content: center;
+}
+
+.project-back-description {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
 }
 
 .project,

@@ -101,7 +101,7 @@ function FrontProjectCard({ project, turned }) {
     
     return (
         <div className='front-project-card' style={style}>
-            <TextArea githubUrl={project.github} title={project.title} description={project.description}/>
+            <TextArea githubUrl={project.github} title={project.title} description={project.summary}/>
             <ImageArea image={project.image}/>
             <TechArea techs={project.tech}/>
         </div>  
@@ -122,9 +122,14 @@ function BackProjectCard({ project, turned }) {
     
     return (
         <div className='back-project-card' style={style}>
-            <p>
-                Test Test Test
-            </p>
+            <ProjectHeader title={project.title} githubUrl={project.github}/>
+            
+            <div className='project-back-description'>
+                {project.description.map((line, index) => {
+                    return <p className='project-description text-shadow-rotation' key={index}>{line}</p> 
+                })}
+            </div>
+            
         </div>  
     );
     
