@@ -81,12 +81,53 @@ function Project({ project, getParentRect, clientX, clientY, rawRotateX, rawRota
         <div className={projClassName} onClick={() => setTurned(prev => !prev)} style={style}>
 
             <ProjectBG getParentRect={getParentRect} clientX={clientX} clientY={clientY} swapX={turned} turnmilliseconds={turningSpeed}/>
-            <TextArea githubUrl={project.github} title={project.title} description={project.description}/>
-            <ImageArea image={project.image} turned={turned}/>
-            <TechArea techs={project.tech}/>
+            <FrontProjectCard project={project} turned={turned}/>
+            <BackProjectCard project={project} turned={turned}/>
 
         </div>
     );
+}
+
+function FrontProjectCard({ project, turned }) {
+    
+    //todo - calculate the delay based on the turning speed
+    let style = {
+        "transitionDelay": "0.2s"
+    };
+    if(turned) {
+        style["opacity"] = "0";
+        style["pointerEvents"] = "none";
+    }
+    
+    return (
+        <div className='front-project-card' style={style}>
+            <TextArea githubUrl={project.github} title={project.title} description={project.description}/>
+            <ImageArea image={project.image}/>
+            <TechArea techs={project.tech}/>
+        </div>  
+    );
+    
+}
+
+function BackProjectCard({ project, turned }) {
+    
+    //todo - calculate the delay based on the turning speed
+    let style = {
+        "transitionDelay": "0.2s"
+    };
+    if(!turned) {
+        style["opacity"] = "0";
+        style["pointerEvents"] = "none";
+    }
+    
+    return (
+        <div className='back-project-card' style={style}>
+            <p>
+                Test Test Test
+            </p>
+        </div>  
+    );
+    
 }
 
 function TextArea({ githubUrl, title, description }) {
@@ -110,20 +151,10 @@ function ProjectHeader({ title, githubUrl }) {
     );
 }
 
-function ImageArea({ image, clickable, turned }) {
-    
-    //todo - calculate the delay based on the turning speed
-    let style = {
-        "transitionDelay": "0.2s"
-    };
-    if(turned) {
-        style["opacity"] = "0";
-        style["pointerEvents"] = "none";
-    }
-    
+function ImageArea({ image, clickable }) {
     return (
-        <div className='project-image-area' style={style}>
-            <ZoomableImage turned={turned} clickable={clickable} imagePath={image} normalStyle="project-image border-shadow-rotation"/>
+        <div className='project-image-area'>
+            <ZoomableImage clickable={clickable} imagePath={image} normalStyle="project-image border-shadow-rotation"/>
         </div>
     );
 }
