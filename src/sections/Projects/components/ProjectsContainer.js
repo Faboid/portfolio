@@ -92,18 +92,21 @@ function Project({ project, getParentRect, clientX, clientY, rawRotateX, rawRota
 function TextArea({ githubUrl, title, description }) {
     return (
         <div className='project-text-area'>
-
-            <div className='project-header'>
-                <span className='project-title text-shadow-rotation'>{title}</span>
-                <span className='github-mark-container'>
-                    <GithubMark link={githubUrl}/>
-                    <span className='github-mark-shadows'></span>
-                </span>
-            </div>
-
+            <ProjectHeader title={title} githubUrl={githubUrl}/>
             <p className='project-description text-shadow-rotation'>{description}</p>
-            
         </div>  
+    );
+}
+
+function ProjectHeader({ title, githubUrl }) {
+    return (
+        <div className='project-header'>
+            <span className='project-title text-shadow-rotation'>{title}</span>
+            <span className='github-mark-container'>
+                <GithubMark link={githubUrl}/>
+                <span className='github-mark-shadows'></span>
+            </span>
+        </div>
     );
 }
 
