@@ -7,47 +7,41 @@ import './ProjectsContainer.css';
 import useCooldown from '../hooks/useCooldown';
 
 export default function ProjectsContainer({ projects }) {
-
-    const containerDiv = useRef(null);
-    const [mouseX, setMouseX] = useState(0);
-    const [mouseY, setMouseY] = useState(0);
-
-    function onMouseMove(e) {
-        setMouseX(() => e.clientX);
-        setMouseY(() => e.clientY);
-    }
-
     return (
-        <div 
-            className='projects-container' 
-            ref={containerDiv}
-            onMouseMove={(e) => onMouseMove(e)}
-            >
-
+        <div className='projects-container'>
             {projects.map(item => {
                 return <ProjectHitScan 
                     key={item.title} 
-                    project={item} 
-                    getParentRect={() => containerDiv.current.getBoundingClientRect()} 
-                    clientX={mouseX}
-                    clientY={mouseY}/>;
+                    project={item}/>;
             })}
         </div>
     );
 }
 
-function ProjectHitScan({ project, getParentRect, clientX, clientY }) {
+function ProjectHitScan({ project }) {
     
     const hitscanRef = useRef(null);
-    const [rawRotateX, rawRotateY] = useRotationFromPosition(() => hitscanRef.current.getBoundingClientRect(), clientX, clientY, 15, 5);
+    const [mouseX, setMouseX] = useState(0);
+    const [mouseY, setMouseY] = useState(0);
+    const [rawRotateX, rawRotateY] = useRotationFromPosition(() => hitscanRef.current.getBoundingClientRect(), mouseX, mouseY, 15, 5);
+    
+    function onMouseMove(e) {
+        setMouseX(() => e.clientX);
+        setMouseY(() => e.clientY);
+    }
+    
+    function onMouseLeave(e) {
+        setMouseX(() => 0);
+        setMouseY(() => 0);
+    }
     
     return (
-        <div className='hitscan' ref={hitscanRef}>
+        <div className='hitscan' ref={hitscanRef} onMouseMove={e => onMouseMove(e)} onMouseLeave={e => onMouseLeave(e)}>
             <Project
                 project={project}
-                getParentRect={getParentRect}
-                clientX={clientX}
-                clientY={clientY}
+                getParentRect={() => hitscanRef.current.getBoundingClientRect()}
+                clientX={mouseX}
+                clientY={mouseY}
                 rawRotateX={rawRotateX}
                 rawRotateY={rawRotateY}
                 />
