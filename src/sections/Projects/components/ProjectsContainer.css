@@ -73,6 +73,7 @@
 }
 
 .back-project-card {
+    --rotate-y: var(--raw-rotate-y);
     transform: rotateY(180deg);
     display: grid;
     grid-template-rows: auto 1fr;
