@@ -1,11 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import "./ProjectBG.css";
 
-export default function ProjectBG({ getParentRect, clientX, clientY }) {
+export default function ProjectBG({ getParentRect, clientX, clientY, swapX, turnmilliseconds }) {
     
     const bgRef = useRef(null);
     const [lightX, setLightX] = useState(0);
     const [lightY, setLightY] = useState(0);
+    
+    const bgClass = "project-bg " + (swapX ? "turned" : "");
+    
+    const bgStyle = {
+        "transition": turnmilliseconds + 'ms'
+    };
 
     //handle light
     useEffect(() => {
@@ -27,7 +33,7 @@ export default function ProjectBG({ getParentRect, clientX, clientY }) {
     }, [getParentRect, clientX, clientY]);
 
     return (
-        <div ref={bgRef} className='project-bg'>
+        <div ref={bgRef} className={bgClass} style={bgStyle}>
             <div style={{
                 "--mouse-x": lightX,
                 "--mouse-y": lightY
