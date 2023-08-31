@@ -122,7 +122,7 @@ function BackProjectCard({ project, turned }) {
     
     return (
         <div className='back-project-card' style={style}>
-            <ProjectHeader title={project.title} githubUrl={project.github}/>
+            <ProjectHeader title={project.title} githubUrl={project.github} swap={true}/>
             
             <div className='project-back-description'>
                 {project.description.map((line, index) => {
@@ -138,21 +138,38 @@ function BackProjectCard({ project, turned }) {
 function TextArea({ githubUrl, title, description }) {
     return (
         <div className='project-text-area'>
-            <ProjectHeader title={title} githubUrl={githubUrl}/>
+            <ProjectHeader title={title} githubUrl={githubUrl} swap={false}/>
             <p className='project-description text-shadow-rotation'>{description}</p>
         </div>  
     );
 }
 
-function ProjectHeader({ title, githubUrl }) {
+function ProjectHeader({ title, githubUrl, swap }) {
     return (
         <div className='project-header'>
-            <span className='project-title text-shadow-rotation'>{title}</span>
-            <span className='github-mark-container'>
-                <GithubMark link={githubUrl}/>
-                <span className='github-mark-shadows'></span>
-            </span>
+                
+            {swap ? (
+                <>
+                    <GithubMarkWithShadows githubUrl={githubUrl}/>
+                    <span className='project-title text-shadow-rotation'>{title}</span>
+                </>
+            ) : (
+                <>
+                    <span className='project-title text-shadow-rotation'>{title}</span>
+                    <GithubMarkWithShadows githubUrl={githubUrl}/>
+                </> 
+            )}
+                
         </div>
+    );
+}
+
+function GithubMarkWithShadows({ githubUrl }) {
+    return (
+        <span className='github-mark-container'>
+            <GithubMark link={githubUrl}/>
+            <span className='github-mark-shadows'></span>
+        </span>
     );
 }
 
