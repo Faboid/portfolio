@@ -60,15 +60,13 @@ function Project({ project, getParentRect, clientX, clientY, rawRotateX, rawRota
 
     const [turned, setTurned] = useState(false);
     const turningSpeed = 1000;
-    const turning = useCooldown(turned, turningSpeed);
+    const turning = useCooldown(turned, Math.max(200, turningSpeed - 200));
     const projClassName = "project border-shadow-rotation " + (turned ? "turned" : "");    
     
     let style;
     if(turning) {
         style = {
-            "transition": "transform " + turningSpeed + 'ms',
-            "--raw-rotate-x": 0,
-            "--raw-rotate-y": 0 
+            "transition": "transform " + turningSpeed + 'ms'
         };
     } else {
         style = {
