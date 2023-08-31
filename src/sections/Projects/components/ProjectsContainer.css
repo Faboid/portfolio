@@ -72,6 +72,10 @@
     grid-auto-rows: minmax(0, 1fr);
 }
 
+.back-project-card {
+    transform: rotateY(180deg);
+}
+
 .project,
 .border-shadow-rotation,
 .text-shadow-rotation,
