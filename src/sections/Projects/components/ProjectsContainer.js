@@ -66,7 +66,9 @@ function Project({ project, getParentRect, clientX, clientY, rawRotateX, rawRota
     let style;
     if(turning) {
         style = {
-            "transition": "transform " + turningSpeed + 'ms'
+            "transition": "transform " + turningSpeed + 'ms',
+            "--raw-rotate-x": 0,
+            "--raw-rotate-y": 0 
         };
     } else {
         style = {
