@@ -24,3 +24,11 @@
 .project:hover .project-light {
     opacity: 1;
 }
+
+@media (hover: none) {
+
+    .project-light {
+        background: transparent;
+    }
+    
+}
