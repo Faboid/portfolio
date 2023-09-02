@@ -19,10 +19,11 @@
         "image": "/SuperSold_Image.png",
         "title": "SuperSold",
         "github": "https://github.com/Faboid/SuperSold",
-        "summary": "An ASP.NET Core MVC marketplace where users can register, upload products, and simulate buying and selling. Features include user authentication, product management, and a responsive interface.",
+        "summary": "An ASP.NET Core MVC marketplace where users can register, upload products, and simulate buying and selling. Features include user and admin roles, product management, and a dynamic user interface.",
         "description": [
-            "Test",
-            "Test2"
+            "Supersold was conceived as a project to learn ASP.NET Core MVC and related technologies.",
+            "The main challenge was the unexpected range of new technologies required. From front-end languages to auth, EFCore, and MySQL, this application tested my adaptability and quick learning.",
+            "Building SuperSold gave me a peek into the knowledge necessary to build sites and has provided a robust foundation to learn further technologies."
         ],
         "tech": [
             "C#",
