@@ -5,8 +5,9 @@
         "github": "https://github.com/Faboid/Backuper",
         "summary": "Backuper is a C# WPF desktop app for Windows that automates folder and file backups. It supports a unique version limit for each backup and performs automatic cleanup of older backups.",
         "description": [
-            "Test",
-            "Test2"
+            "This project was born from the need to simplify manual file backups. Its objective is to automate daily backups for multiple user-defined locations.",
+            "A major challenge has been the management and storage of data. To allow manual configuration, each backup has its dedicated config file. The backups themselves, meanwhile, are organized in a tree-like structure to segregate each backup and its versions.",
+            "Overall, developing Backuper has given me a deeper understanding of the intricacies of the file system and WPF."
         ],
         "tech": [
             "C#",
