@@ -53,8 +53,9 @@
         "github": "https://github.com/Faboid/MealPicker",
         "summary": "A WPF application that retrieves random recipes from a third party API and presents them in a user-friendly format. It supports custom themes and securely encrypts the user API key.",
         "description": [
-            "Test",
-            "Test2"
+            "This project's goal was to stimulate the user's cooking inspiration with a single click. Using a third-party API, MealPicker lets the user request random recipes containing all information needed displayed on a single page.",
+            "The main challenges for building this application were building a custom mechanism to change the application theme during runtime, creating a custom cache, and handling the request and encryption of the user's API key.",
+            "Constructing MealPicker taught me how to make API requests and display them to the user with WPF."
         ],
         "tech": [
             "C#",
