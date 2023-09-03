@@ -7,7 +7,7 @@
         "description": [
             "This project was born from the need to simplify manual file backups. Its objective is to automate daily backups for multiple user-defined locations.",
             "A major challenge has been the management and storage of data. To allow manual configuration, each backup has its dedicated config file. The backups themselves, meanwhile, are organized in a tree-like structure to segregate each backup and its versions.",
-            "Overall, developing Backuper has given me a deeper understanding of the intricacies of the file system and WPF."
+            "Overall, developing Backuper has given me a deeper understanding of the intricacies of the file system, WPF, and MVVM."
         ],
         "tech": [
             "C#",
@@ -37,8 +37,9 @@
         "github": "https://github.com/Faboid/PswManager",
         "summary": "A secure password manager for WPF and CLI platforms, offering secure storage and management of passwords and emails.",
         "description": [
-            "Test",
-            "Test2"
+            "Originally, this project was to create a simple way to store encrypted passwords locally. However, during development, it turned into an experimentation ground for learning coding practices.",
+            "The biggest undertaking of this project has been parsing command parameters from the CLI. It started out as simply splitting them on commas and then evolved into pipelines that touched interfaces, reflection, validation techniques, and custom metadata attributes.",
+            "Writing and rewriting different aspects of this application has been the turning point for grasping OOP and gave me insight into building clean, reusable code."
         ],
         "tech": [
             "C#",
