@@ -5,12 +5,13 @@
         "github": "https://github.com/Faboid/Backuper",
         "summary": "Backuper is a C# WPF desktop app for Windows that automates folder and file backups. It supports a unique version limit for each backup and performs automatic cleanup of older backups.",
         "description": [
-            "Test",
-            "Test2"
+            "This project was born from the need to simplify manual file backups. Its objective is to automate daily backups for multiple user-defined locations.",
+            "A major challenge has been the management and storage of data. To allow manual configuration, each backup has its dedicated config file. The backups themselves, meanwhile, are organized in a tree-like structure to segregate each backup and its versions.",
+            "Overall, developing Backuper has given me a deeper understanding of the intricacies of the file system, WPF, and MVVM."
         ],
         "tech": [
             "C#",
-            "WPF",
+            "MVVM WPF",
             "XAML"
         ]
     },
@@ -18,15 +19,19 @@
         "image": "/SuperSold_Image.png",
         "title": "SuperSold",
         "github": "https://github.com/Faboid/SuperSold",
-        "summary": "An ASP.NET Core MVC marketplace where users can register, upload products, and simulate buying and selling. Features include user authentication, product management, and a responsive interface.",
+        "summary": "An ASP.NET Core MVC marketplace where users can register, upload products, and simulate buying and selling. Features include user and admin roles, product management, and a dynamic user interface.",
         "description": [
-            "Test",
-            "Test2"
+            "Supersold was conceived as a project to learn ASP.NET Core MVC and related technologies.",
+            "The main challenge was the unexpected range of new technologies required. From front-end languages to auth, EFCore, and MySQL, this application tested my adaptability and quick learning.",
+            "Building SuperSold gave me a peek into the knowledge necessary to build sites and has provided a robust foundation to learn further technologies."
         ],
         "tech": [
             "C#",
-            "WPF",
-            "XAML"
+            "ASP.NET Core MVC",
+            "MySQL",
+            "EFCore",
+            "Javascript(JQuery)",
+            "HTML/CSS"
         ]
     },
     {
@@ -35,13 +40,16 @@
         "github": "https://github.com/Faboid/PswManager",
         "summary": "A secure password manager for WPF and CLI platforms, offering secure storage and management of passwords and emails.",
         "description": [
-            "Test",
-            "Test2"
+            "Originally, this project was to create a simple way to store encrypted passwords locally. However, during development, it turned into an experimentation ground for learning coding practices.",
+            "The biggest undertaking of this project has been parsing command parameters from the CLI. It started out as simply splitting them on commas and then evolved into pipelines that touched interfaces, reflection, validation techniques, and custom metadata attributes.",
+            "Writing and rewriting different aspects of this application has been the turning point for grasping OOP and gave me insight into building clean, reusable code."
         ],
         "tech": [
             "C#",
-            "WPF",
-            "XAML"
+            "MVVM WPF",
+            "XAML",
+            "SQLite",
+            "SQL"
         ]
     },
     {
@@ -50,13 +58,15 @@
         "github": "https://github.com/Faboid/MealPicker",
         "summary": "A WPF application that retrieves random recipes from a third party API and presents them in a user-friendly format. It supports custom themes and securely encrypts the user API key.",
         "description": [
-            "Test",
-            "Test2"
+            "This project's goal was to stimulate the user's cooking inspiration with a single click. Using a third-party API, MealPicker lets the user request random recipes containing all information needed displayed on a single page.",
+            "The main challenges for building this application were building a custom mechanism to change the application theme during runtime, creating a custom cache, and handling the request and encryption of the user's API key.",
+            "Constructing MealPicker taught me how to make API requests and display them to the user with WPF."
         ],
         "tech": [
             "C#",
-            "WPF",
-            "XAML"
+            "MVVM WPF",
+            "XAML",
+            "Spoonacular API"
         ]
     }
 ]

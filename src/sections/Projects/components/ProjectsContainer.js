@@ -178,11 +178,15 @@ function ImageArea({ image, clickable }) {
 function TechArea({ techs }) {
     return (
         <div className='project-tech-area'>
-            {techs.map((element) => {
-                return (
-                    <span key={element} className='tech text-shadow-rotation'>{element}</span>
-                );
-            })}
+            <ul className='project-tech-list'>
+                {techs.map((element) => {
+                    return (
+                        <li className='project-tech-list-item' key={element}>
+                            <span className='tech text-shadow-rotation'>{element}</span>
+                        </li>
+                    );
+                })}
+            </ul>
         </div>  
     );
 }
