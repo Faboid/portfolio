@@ -69,7 +69,7 @@
 
 .front-project-card {
     display: grid;
-    grid-template-rows: 2fr auto 1fr;
+    grid-template-rows: auto auto auto;
     grid-auto-flow: row;
     grid-auto-rows: minmax(0, 1fr);
 }
