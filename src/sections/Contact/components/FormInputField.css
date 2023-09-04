@@ -22,12 +22,11 @@
 
 .input-field {
     outline: none;
+    border: none;
     padding: 0.2rem;
     width: 100%;
     background: var(--input-field-bg);
-    transition: background 500ms;
-    border: none;
-    border-color: transparents;
+    transition: 500ms;
     color: var(--input-field-text-color);
     font-size: 80%;
 }
