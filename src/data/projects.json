@@ -11,7 +11,7 @@
         ],
         "tech": [
             "C#",
-            "WPF",
+            "MVVM WPF",
             "XAML"
         ]
     },
@@ -27,8 +27,11 @@
         ],
         "tech": [
             "C#",
-            "WPF",
-            "XAML"
+            "ASP.NET Core MVC",
+            "MySQL",
+            "EFCore",
+            "Javascript(JQuery)",
+            "HTML/CSS"
         ]
     },
     {
@@ -43,8 +46,10 @@
         ],
         "tech": [
             "C#",
-            "WPF",
-            "XAML"
+            "MVVM WPF",
+            "XAML",
+            "SQLite",
+            "SQL"
         ]
     },
     {
@@ -59,8 +64,9 @@
         ],
         "tech": [
             "C#",
-            "WPF",
-            "XAML"
+            "MVVM WPF",
+            "XAML",
+            "Spoonacular API"
         ]
     }
 ]
