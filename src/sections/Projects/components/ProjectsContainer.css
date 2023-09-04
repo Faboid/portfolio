@@ -69,7 +69,7 @@
 
 .front-project-card {
     display: grid;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: 2fr auto 1fr;
     grid-auto-flow: row;
     grid-auto-rows: minmax(0, 1fr);
 }
@@ -136,9 +136,23 @@
 }
 
 .project-tech-area {
+    padding-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-tech-list {
+    list-style-type: none;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 2rem;
+    row-gap: 0.2rem;
+    padding:0;
+    margin:0;
 }
 
 .github-mark-container {
@@ -172,7 +186,7 @@
 }
 
 .tech {
-    padding: 0.5rem;
+    display: flex;
 }
 
 @media (max-width: 780px) {
