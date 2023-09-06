@@ -43,14 +43,11 @@
 
 .about-me-container {
     margin:0px;
+    padding: 1rem;
     border-radius: 25px;
     border: white solid 1px;
     background: #11111155;
     max-width: max(30vw, 25rem);
-}
-
-.about-me-text {
-    padding: 0.5rem;
 }
 
 .greeting-text {
